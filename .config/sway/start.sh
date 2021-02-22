@@ -7,5 +7,6 @@ export XDG_DESKTOP=sway
 export QT_QPA_PLATFORM=wayland-egl
 export SDL_VIDEODRIVER=wayland
 export XDG_SESSION_TYPE=wayland
+export PATH=/home/kilometers/.cabal/bin:/home/kilometers/.ghcup/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/kilometers/.cargo/bin:/home/kilometers/go/bin:/home/kilometers/.local/bin:/home/kilometers/.emacs.d/bin
 
 sway

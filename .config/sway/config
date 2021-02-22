@@ -9,7 +9,7 @@ set $right l
 
 set $term alacritty
 
-set $menu ulauncher-toggle
+set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
 
 ################################# STYLING ######################################
 
@@ -66,7 +66,7 @@ exec swayidle -w \
 exec gammastep
 exec ulauncher
 exec mako
-exec_always ~/.config/sway/transparent_non_focused.py
+# exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
 
 ########################### APPLICATION SETTINGS ###############################
@@ -81,6 +81,7 @@ for_window [app_id="calculator"] floating enable
 for_window [app_id="eog"] floating enable
 for_window [app_id="org.gnome.NautilusPreviewer"] floating enable
 for_window [app_id="alacritty_floating"] floating enable
+for_window [app_id="mpv_floating"] floating enable
 for_window [app_id="system-monitor"] floating enable
 for_window [app_id="markets"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
@@ -192,18 +193,19 @@ bindsym $mod+p exec playerctl --player=spotify play-pause
 bindsym $mod+period exec playerctl --player=spotify next
 bindsym $mod+comma exec playerctl --player=spotify previous
 
-# RESIZE MODE
-bindsym $mod+r mode "resize"
-mode "resize" {
-    bindsym $left  resize shrink width  10px
-    bindsym $down  resize grow   height 10px
-    bindsym $up    resize shrink height 10px
-    bindsym $right resize grow   width  10px
+# RESIZE:
+bindsym $mod+ctrl+$left  resize shrink width  10px
+bindsym $mod+ctrl+$down  resize grow   height 10px
+bindsym $mod+ctrl+$up    resize shrink height 10px
+bindsym $mod+ctrl+$right resize grow   width  10px
 
-    # EXIT:
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+ctrl+shift+$left  resize shrink width  40px
+bindsym $mod+ctrl+shift+$down  resize grow   height 40px
+bindsym $mod+ctrl+shift+$up    resize shrink height 40px
+bindsym $mod+ctrl+shift+$right resize grow   width  40px
+
+# MPV:
+bindsym $mod+shift+ctrl+a exec mpv --wayland-app-id=mpv_floating "$(wl-paste)"
 
 ################################ WORKSPACES ####################################
 
