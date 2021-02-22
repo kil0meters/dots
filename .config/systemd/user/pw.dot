@@ -1,0 +1,134 @@
+digraph pipewire {
+link_84 [shape=box style=filled fillcolor=lightblue];
+link_84 [label="link_id: 84\loutput_node_id: 81\linput_node_id: 40\loutput_port_id: 85\linput_port_id: 48\lstate: active\l"];
+port_85 -> link_84 -> port_48;
+link_80 [shape=box style=filled fillcolor=lightblue];
+link_80 [label="link_id: 80\loutput_node_id: 81\linput_node_id: 40\loutput_port_id: 82\linput_port_id: 46\lstate: active\l"];
+port_82 -> link_80 -> port_46;
+subgraph cluster_node_81 {
+bgcolor=palegreen;
+label="node_id: 81\lname: ZOOM VoiceEngine\lmedia_class: Stream/Output/Audio\l"
+port_85 [shape=box style=filled fillcolor=lightcoral];
+port_85 [label="port_id: 85\lname: output_FR\ldirection: output\l"];
+port_82 [shape=box style=filled fillcolor=lightcoral];
+port_82 [label="port_id: 82\lname: output_FL\ldirection: output\l"];
+}
+link_83 [shape=box style=filled fillcolor=lightblue];
+link_83 [label="link_id: 83\loutput_node_id: 41\linput_node_id: 86\loutput_port_id: 51\linput_port_id: 87\lstate: active\l"];
+port_51 -> link_83 -> port_87;
+link_79 [shape=box style=filled fillcolor=lightblue];
+link_79 [label="link_id: 79\loutput_node_id: 41\linput_node_id: 86\loutput_port_id: 50\linput_port_id: 88\lstate: active\l"];
+port_50 -> link_79 -> port_88;
+subgraph cluster_node_86 {
+bgcolor=palegreen;
+label="node_id: 86\lname: ZOOM VoiceEngine\lmedia_class: Stream/Input/Audio\l"
+port_89 [shape=box style=filled fillcolor=lightcoral];
+port_89 [label="port_id: 89\lname: output_FR\ldirection: output\l"];
+port_87 [shape=box style=filled fillcolor=lightslateblue];
+port_87 [label="port_id: 87\lname: input_FR\ldirection: input\l"];
+port_90 [shape=box style=filled fillcolor=lightcoral];
+port_90 [label="port_id: 90\lname: output_FL\ldirection: output\l"];
+port_88 [shape=box style=filled fillcolor=lightslateblue];
+port_88 [label="port_id: 88\lname: input_FL\ldirection: input\l"];
+}
+link_62 [shape=box style=filled fillcolor=lightblue];
+link_62 [label="link_id: 62\loutput_node_id: 60\linput_node_id: 40\loutput_port_id: 64\linput_port_id: 48\lstate: active\l"];
+port_64 -> link_62 -> port_48;
+link_63 [shape=box style=filled fillcolor=lightblue];
+link_63 [label="link_id: 63\loutput_node_id: 60\linput_node_id: 40\loutput_port_id: 65\linput_port_id: 46\lstate: active\l"];
+port_65 -> link_63 -> port_46;
+subgraph cluster_node_60 {
+bgcolor=palegreen;
+label="node_id: 60\lname: Firefox\lmedia_class: Stream/Output/Audio\l"
+port_64 [shape=box style=filled fillcolor=lightcoral];
+port_64 [label="port_id: 64\lname: output_FR\ldirection: output\l"];
+port_65 [shape=box style=filled fillcolor=lightcoral];
+port_65 [label="port_id: 65\lname: output_FL\ldirection: output\l"];
+}
+link_77 [shape=box style=filled fillcolor=lightblue];
+link_77 [label="link_id: 77\loutput_node_id: 73\linput_node_id: 40\loutput_port_id: 75\linput_port_id: 48\lstate: active\l"];
+port_75 -> link_77 -> port_48;
+link_76 [shape=box style=filled fillcolor=lightblue];
+link_76 [label="link_id: 76\loutput_node_id: 73\linput_node_id: 40\loutput_port_id: 74\linput_port_id: 46\lstate: active\l"];
+port_74 -> link_76 -> port_46;
+subgraph cluster_node_73 {
+bgcolor=palegreen;
+label="node_id: 73\lname: speech-dispatcher-dummy\lmedia_class: Stream/Output/Audio\l"
+port_75 [shape=box style=filled fillcolor=lightcoral];
+port_75 [label="port_id: 75\lname: output_FR\ldirection: output\l"];
+port_74 [shape=box style=filled fillcolor=lightcoral];
+port_74 [label="port_id: 74\lname: output_FL\ldirection: output\l"];
+}
+link_67 [shape=box style=filled fillcolor=lightblue];
+link_67 [label="link_id: 67\loutput_node_id: 70\linput_node_id: 40\loutput_port_id: 71\linput_port_id: 48\lstate: active\l"];
+port_71 -> link_67 -> port_48;
+link_69 [shape=box style=filled fillcolor=lightblue];
+link_69 [label="link_id: 69\loutput_node_id: 70\linput_node_id: 40\loutput_port_id: 68\linput_port_id: 46\lstate: active\l"];
+port_68 -> link_69 -> port_46;
+subgraph cluster_node_70 {
+bgcolor=palegreen;
+label="node_id: 70\lname: speech-dispatcher-espeak-ng\lmedia_class: Stream/Output/Audio\l"
+port_71 [shape=box style=filled fillcolor=lightcoral];
+port_71 [label="port_id: 71\lname: output_FR\ldirection: output\l"];
+port_68 [shape=box style=filled fillcolor=lightcoral];
+port_68 [label="port_id: 68\lname: output_FL\ldirection: output\l"];
+}
+link_59 [shape=box style=filled fillcolor=lightblue];
+link_59 [label="link_id: 59\loutput_node_id: 58\linput_node_id: 40\loutput_port_id: 61\linput_port_id: 48\lstate: init\l"];
+port_61 -> link_59 -> port_48;
+link_56 [shape=box style=filled fillcolor=lightblue];
+link_56 [label="link_id: 56\loutput_node_id: 58\linput_node_id: 40\loutput_port_id: 57\linput_port_id: 46\lstate: init\l"];
+port_57 -> link_56 -> port_46;
+subgraph cluster_node_58 {
+bgcolor=palegreen;
+label="node_id: 58\lname: Firefox\lmedia_class: Stream/Output/Audio\l"
+port_61 [shape=box style=filled fillcolor=lightcoral];
+port_61 [label="port_id: 61\lname: output_FR\ldirection: output\l"];
+port_57 [shape=box style=filled fillcolor=lightcoral];
+port_57 [label="port_id: 57\lname: output_FL\ldirection: output\l"];
+}
+subgraph cluster_node_41 {
+bgcolor=palegreen;
+label="node_id: 41\lname: alsa_input.usb-Focusrite_Scarlett_2i2_USB_Y8PBG3Q053861F-00.analog-stereo\lmedia_class: Audio/Source\l"
+port_51 [shape=box style=filled fillcolor=lightcoral];
+port_51 [label="port_id: 51\lname: capture_FR\ldirection: output\l"];
+port_50 [shape=box style=filled fillcolor=lightcoral];
+port_50 [label="port_id: 50\lname: capture_FL\ldirection: output\l"];
+}
+subgraph cluster_node_40 {
+bgcolor=palegreen;
+label="node_id: 40\lname: alsa_output.usb-Focusrite_Scarlett_2i2_USB_Y8PBG3Q053861F-00.analog-stereo\lmedia_class: Audio/Sink\l"
+port_49 [shape=box style=filled fillcolor=lightcoral];
+port_49 [label="port_id: 49\lname: monitor_FR\ldirection: output\l"];
+port_48 [shape=box style=filled fillcolor=lightslateblue];
+port_48 [label="port_id: 48\lname: playback_FR\ldirection: input\l"];
+port_47 [shape=box style=filled fillcolor=lightcoral];
+port_47 [label="port_id: 47\lname: monitor_FL\ldirection: output\l"];
+port_46 [shape=box style=filled fillcolor=lightslateblue];
+port_46 [label="port_id: 46\lname: playback_FL\ldirection: input\l"];
+}
+subgraph cluster_node_39 {
+bgcolor=palegreen;
+label="node_id: 39\lname: alsa_output.pci-0000:29:00.1.hdmi-stereo-extra4\lmedia_class: Audio/Sink\l"
+port_45 [shape=box style=filled fillcolor=lightcoral];
+port_45 [label="port_id: 45\lname: monitor_FR\ldirection: output\l"];
+port_44 [shape=box style=filled fillcolor=lightslateblue];
+port_44 [label="port_id: 44\lname: playback_FR\ldirection: input\l"];
+port_43 [shape=box style=filled fillcolor=lightcoral];
+port_43 [label="port_id: 43\lname: monitor_FL\ldirection: output\l"];
+port_42 [shape=box style=filled fillcolor=lightslateblue];
+port_42 [label="port_id: 42\lname: playback_FL\ldirection: input\l"];
+}
+subgraph cluster_node_33 {
+bgcolor=palegreen;
+label="node_id: 33\lname: Midi-Bridge\lmedia_class: Midi/Bridge\l"
+port_35 [shape=box style=filled fillcolor=lightcoral];
+port_35 [label="port_id: 35\lname: Midi Through:capture_0\ldirection: output\l"];
+port_34 [shape=box style=filled fillcolor=lightslateblue];
+port_34 [label="port_id: 34\lname: Midi Through:playback_0\ldirection: input\l"];
+}
+subgraph cluster_node_28 {
+bgcolor=palegreen;
+label="node_id: 28\lname: Dummy-Driver\lmedia_class: (null)\l"
+}
+}

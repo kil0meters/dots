@@ -1,0 +1,51 @@
+// vim:ft=json
+
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-right": ["custom/media", "custom/vpn", "clock#date", "clock#time"],
+
+  "sway/workspaces": {
+    "all-outputs": false,
+    // "disable-scroll": true,
+    "format": "{name}",
+  },
+
+  "sway/mode": {
+    "format": "{}",
+  },
+
+  "clock#time": {
+    "interval": 1,
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "{:%R:%S}"
+  },
+
+  "clock#date": {
+    "interval": 10,
+    "format": "{: %b %e}", 
+    "tooltip-format": "{:%B %e, %Y}"
+  },
+
+  "custom/media": {
+    "format": "{icon}{}",
+    "return-type": "json",
+    "escape": true,
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " ",
+    },
+    "max-length":70,
+    "exec": "playerctl --player=spotify metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{artist}} - {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl --player=spotify play-pause",
+  },
+
+  "custom/vpn": {
+    "format": "VPN ",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/proton0",
+    "return-type": "json",
+    "interval": 5
+  }
+}
