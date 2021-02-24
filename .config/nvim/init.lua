@@ -89,6 +89,11 @@ vim.o.foldmethod = 'syntax' -- fold based on syntax
 vim.o.signcolumn = 'yes'    -- enable sign column all the time
 vim.o.foldlevel = 99        -- don't fold files when opened
 
+cmd [[
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+]]
+
 -----MAPPINGS-----
 _G.completion_confirm = function()
   if vim.fn.pumvisible() ~= 0 then

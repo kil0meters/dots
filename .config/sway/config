@@ -64,7 +64,6 @@ exec swayidle -w \
 ########################### STARTUP APPLICATIONS ###############################
 
 exec gammastep
-exec ulauncher
 exec mako
 # exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
@@ -81,7 +80,6 @@ for_window [app_id="calculator"] floating enable
 for_window [app_id="eog"] floating enable
 for_window [app_id="org.gnome.NautilusPreviewer"] floating enable
 for_window [app_id="alacritty_floating"] floating enable
-for_window [app_id="mpv_floating"] floating enable
 for_window [app_id="system-monitor"] floating enable
 for_window [app_id="markets"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
@@ -89,6 +87,7 @@ for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [app_id="retroarch"] fullscreen enable
 
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="mpv_floating"] floating enable, sticky enable
 
 for_window [app_id="alacritty"] max_render_time 1
 

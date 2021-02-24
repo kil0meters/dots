@@ -56,6 +56,8 @@ set -a PATH /home/kilometers/go/bin
 set -a PATH /home/kilometers/.local/bin
 set -a PATH /home/kilometers/.emacs.d/bin
 
+set -a PATH ./node_modules/.bin
+
 set -a NODE_PATH /home/kilometers/.local/lib/node_modules
 
 fish_vi_key_bindings
