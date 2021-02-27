@@ -9,7 +9,8 @@ set $right l
 
 set $term alacritty
 
-set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
+# set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
+set $menu albert show
 
 ################################# STYLING ######################################
 
@@ -65,14 +66,15 @@ exec swayidle -w \
 
 exec gammastep
 exec mako
+exec albert
 # exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
 
 ########################### APPLICATION SETTINGS ###############################
 
-for_window [app_id="ulauncher"] {
+for_window [app_id="albert"] {
     border none
-    move up 128 px
+    move up 256 px
     floating enable
 }
 
@@ -219,6 +221,17 @@ set $workspace8  8
 set $workspace9  9
 set $workspace10 10
 
+workspace $workspace1 output DP-1
+workspace $workspace3 output DP-1
+workspace $workspace5 output DP-1
+workspace $workspace7 output DP-1
+workspace $workspace9 output DP-1
+workspace $workspace2 output DP-2
+workspace $workspace4 output DP-2
+workspace $workspace6 output DP-2
+workspace $workspace8 output DP-2
+workspace $workspace10 output DP-2
+
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -243,8 +256,12 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 ################################# STATUS BAR ##################################
 
-bar {
-    swaybar_command waybar
-}
+exec_always pkill waybar
+exec_always killall playerctl
+exec_always waybar
 
-include /etc/sway/config.d/*
+# bar {
+#     swaybar_command waybar
+# }
+
+include ~/.config/sway/conf.d/*
