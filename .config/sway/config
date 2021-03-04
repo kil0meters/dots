@@ -9,8 +9,8 @@ set $right l
 
 set $term alacritty
 
-# set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
-set $menu albert show
+set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
+# set $menu albert show
 
 ################################# STYLING ######################################
 
@@ -66,7 +66,7 @@ exec swayidle -w \
 
 exec gammastep
 exec mako
-exec albert
+# exec albert
 # exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
 
@@ -95,7 +95,7 @@ for_window [app_id="alacritty"] max_render_time 1
 
 ################################## OUTPUTS #####################################
 
-mouse_warping none 
+mouse_warping none
 seat * hide_cursor 8000
 
 output * bg #1d2021 solid_color
@@ -183,7 +183,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # LOCK SCREEN:
-bindsym $mod+Shift+y exec $lockscreen 
+bindsym $mod+Shift+y exec $lockscreen
 
 # SOUND:
 bindsym $mod+u exec amixer -D pulse set Master 1+ toggle
@@ -243,15 +243,15 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-bindsym $mod+Shift+1 move container to workspace $workspace1 
-bindsym $mod+Shift+2 move container to workspace $workspace2 
-bindsym $mod+Shift+3 move container to workspace $workspace3 
-bindsym $mod+Shift+4 move container to workspace $workspace4 
-bindsym $mod+Shift+5 move container to workspace $workspace5 
-bindsym $mod+Shift+6 move container to workspace $workspace6 
-bindsym $mod+Shift+7 move container to workspace $workspace7 
-bindsym $mod+Shift+8 move container to workspace $workspace8 
-bindsym $mod+Shift+9 move container to workspace $workspace9 
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 ################################# STATUS BAR ##################################

@@ -1,8 +1,3 @@
--- helpers
--- cmd = vim.cmd
--- fn = vim.fn
--- g = vim.g
-
 require 'settings'
 require 'mappings'
 require 'plugins'
@@ -30,9 +25,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.cmd [[
 
 filetype plugin indent on
-
-command! -bang -nargs=* WikiRg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': '/home/kilometers/vimwiki'}), <bang>0)
-
 autocmd BufWritePre * :%s/\s\+$//e
 
 ]]
+
+-- You paraphrase Weist (2016) as saying serial killers are treatest as
+-- celebrities just as much as they are treated as monsters. However, some of
+-- the examples supplied don't really seem to support the idea that they are
+-- viewed as celebrities. One might think that a monster would be prodded by
+-- academic researchers, journalists, and law enforcement. From an *incredibly*
+-- cursory glance at Weist (2016) (ctrl-f), it does not seem like it makes
+-- direct reference to any of these parties.

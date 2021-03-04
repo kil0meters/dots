@@ -49,7 +49,6 @@ return require('packer').startup(function(use)
     config = load_config('nvim-compe')
   }
 
-  -- -- Intellisense
   use {
     'neovim/nvim-lspconfig',
     requires = {'onsails/lspkind-nvim'},
@@ -98,11 +97,11 @@ return require('packer').startup(function(use)
   -- Fuzzy find
   use {
     'nvim-telescope/telescope.nvim',
-    -- '~/Projects/telescope.nvim',
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
-      {'nvim-treesitter/nvim-treesitter', opt = true}
+      {'nvim-treesitter/nvim-treesitter', opt = true},
+      {'nvim-telescope/telescope-fzy-native.nvim'}
     },
     config = load_config('telescope')
   }

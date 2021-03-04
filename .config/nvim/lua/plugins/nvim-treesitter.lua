@@ -25,4 +25,12 @@ return function()
     filetype = "markdown", -- if filetype does not agrees with parser name
     used_by = {"md"} -- additional filetypes that use this parser
   }
+  -- parser_config.tex = {
+  --   install_info = {
+  --     url = "https://github.com/latex-lsp/tree-sitter-latex", -- local path or git repo
+  --     files = {"src/parser.c", "src/binding.cc"}
+  --   },
+  --   filetype = "tex", -- if filetype does not agrees with parser name
+  --   used_by = {"tex", "plaintex"} -- additional filetypes that use this parser
+  -- }
 end

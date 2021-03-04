@@ -64,6 +64,7 @@ vim.wo.signcolumn = 'yes'    -- enable sign column all the time
 vim.wo.foldlevel = 99        -- don't fold files when opened
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'treesitter#foldexpr()'
+vim.wo.concealcursor = 'n'
 
 vim.o.relativenumber = true -- relative line numbering
 vim.o.number = true         -- line numbering
@@ -75,3 +76,4 @@ vim.o.signcolumn = 'yes'    -- enable sign column all the time
 vim.o.foldlevel = 99        -- don't fold files when opened
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'treesitter#foldexpr()'
+vim.wo.concealcursor = 'n'

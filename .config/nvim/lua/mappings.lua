@@ -102,6 +102,9 @@ map('n', '<leader>wv',  '<C-w>v',     {silent = true, noremap = true})
 map('n', '<leader>wtv', ':VTerm<CR>', {silent = true, noremap = true})
 map('n', '<leader>wts', ':Term<CR>',  {silent = true, noremap = true})
 
+-- formatting
+map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', {silent = true, noremap = true})
+
 -- tree
 map('n', '<leader>l', '<cmd>Telescope file_browser theme=get_dropdown<CR>', {silent = true})
 
