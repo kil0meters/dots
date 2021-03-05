@@ -4,8 +4,8 @@ require 'plugins'
 
 -----LSP-----
 
- -- populate quickfix list with diagnostics automatically
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  -- populate quickfix list with diagnostics automatically
   function(err, method, result, client_id)
     require('lsp_extensions.workspace.diagnostic').handler(err, method, result, client_id)
     require('lsp_extensions.workspace.diagnostic').set_qf_list{

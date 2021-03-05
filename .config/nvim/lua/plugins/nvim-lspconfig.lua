@@ -1,9 +1,14 @@
 return function()
   local lsp = require 'lspconfig'
   local default_on_attach = function(client)
+    -- require('lsp_signature').on_attach()
     vim.cmd "augroup lsp_commands"
     vim.cmd "au!"
-    vim.cmd "au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()"
+    -- vim.cmd "au CursorHold <buffer> lua vim.lsp.buf.hover()"
+    vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.signature_help()"
+    vim.cmd "au CursorHold  <buffer> lua vim.lsp.buf.document_highlight()"
+    vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()"
+    vim.cmd "au CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
 
     if client.resolved_capabilities.document_formatting == true then
     vim.cmd "au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"

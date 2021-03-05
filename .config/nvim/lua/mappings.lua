@@ -66,17 +66,17 @@ map('i', '<CR>',      'v:lua.completion_confirm()', {expr = true, noremap = true
 map('i', '<C-j>',     'v:lua.snippet_completion()', {expr = true, noremap = true})
 
 -- langauge server protocol
-map('n', '<c-]>',      ':lua vim.lsp.buf.definition()<CR>',         {silent = true, noremap = true})
-map('n', 'K',          ':lua vim.lsp.buf.hover()<CR>',              {silent = true, noremap = true})
-map('n', 'gD',         ':lua vim.lsp.buf.implementation()<CR>',     {silent = true, noremap = true})
-map('n', 'gd',         ':lua vim.lsp.buf.definition()<CR>',         {silent = true, noremap = true})
-map('n', 'I',          ':lua vim.lsp.buf.signature_help()<CR>',     {silent = true, noremap = true})
-map('n', 'gr',         ':Telescope lsp_references<CR>',             {silent = true, noremap = true})
-map('n', 'ga',         ':lua vim.lsp.buf.code_action()<CR>',        {silent = true, noremap = true})
-map('n', 'gs',         ':Telescope lsp_workspace_symbols<CR>',      {silent = true, noremap = true})
-map('n', 'gS',         ':Telescope lsp_document_symbols<CR>',       {silent = true, noremap = true})
-map('n', 'gR',         ':lua vim.lsp.buf.rename()<CR>',             {silent = true, noremap = true})
-map('n', '<leader>do', ':lua vim.lsp.diagnostic.set_loclist()<CR>', {silent = true, noremap = true})
+map('n', '<c-]>',      ':lua vim.lsp.buf.definition()<CR>',                   {silent = true, noremap = true})
+map('n', 'K',          ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {silent = true, noremap = true})
+map('n', 'gD',         ':lua vim.lsp.buf.implementation()<CR>',               {silent = true, noremap = true})
+map('n', 'gd',         ':lua vim.lsp.buf.definition()<CR>',                   {silent = true, noremap = true})
+map('n', 'I',          ':lua vim.lsp.buf.hover()<CR>',                        {silent = true, noremap = true})
+map('n', 'gr',         ':Telescope lsp_references<CR>',                       {silent = true, noremap = true})
+map('n', 'ga',         ':lua vim.lsp.buf.code_action()<CR>',                  {silent = true, noremap = true})
+map('n', 'gs',         ':Telescope lsp_workspace_symbols<CR>',                {silent = true, noremap = true})
+map('n', 'gS',         ':Telescope lsp_document_symbols<CR>',                 {silent = true, noremap = true})
+map('n', 'gR',         ':lua vim.lsp.buf.rename()<CR>',                       {silent = true, noremap = true})
+map('n', '<leader>do', ':lua vim.lsp.diagnostic.set_loclist()<CR>',           {silent = true, noremap = true})
 
 -- fuzzy finding
 map('n', '<C-p>',       '<cmd>Telescope fd theme=get_dropdown<CR>',          {silent = true, noremap = true})

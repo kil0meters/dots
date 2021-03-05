@@ -51,7 +51,10 @@ return require('packer').startup(function(use)
 
   use {
     'neovim/nvim-lspconfig',
-    requires = {'onsails/lspkind-nvim'},
+    requires = {
+      {'onsails/lspkind-nvim'},
+      {'ray-x/lsp_signature.nvim'}, -- for signature help while typing
+    },
     config = load_config('nvim-lspconfig')
   }
 
