@@ -144,13 +144,14 @@ return require('packer').startup(function(use)
   }
 
   use {'sukima/xmledit', ft = 'xml'}
-  use {'tmhedberg/SimpylFold', ft = 'python'}
-  use {'KeitaNakamura/tex-conceal.vim', ft = 'tex'}
   use {'neovimhaskell/haskell-vim', ft = 'haskell'}
 
   -- use {'sheerun/vim-polyglot', event = 'VimEnter *'}
   use 'tweekmonster/startuptime.vim'
 
+  use 'tmhedberg/SimpylFold'
+  use 'KeitaNakamura/tex-conceal.vim'
+  use 'matze/vim-tex-fold'
   use 'mbbill/undotree'
   use 'tjdevries/lsp_extensions.nvim'
   use 'tpope/vim-surround'

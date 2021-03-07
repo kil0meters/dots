@@ -7,7 +7,13 @@ return function()
 
   vim.cmd 'colorscheme gruvbox'
 
+  -- hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+  -- hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+  -- hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
   vim.cmd [[
+  hi! link LspReferenceRead Visual
+  hi! link LspReferenceText Visual
+  hi! link LspReferenceWrite Visual
 
   hi! link DiffAdd GruvboxGreenSign
   hi! link DiffChange GruvboxAquaSign

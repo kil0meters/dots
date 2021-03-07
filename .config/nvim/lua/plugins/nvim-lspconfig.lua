@@ -1,17 +1,19 @@
 return function()
   local lsp = require 'lspconfig'
   local default_on_attach = function(client)
-    -- require('lsp_signature').on_attach()
     vim.cmd "augroup lsp_commands"
     vim.cmd "au!"
-    -- vim.cmd "au CursorHold <buffer> lua vim.lsp.buf.hover()"
-    vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.signature_help()"
-    vim.cmd "au CursorHold  <buffer> lua vim.lsp.buf.document_highlight()"
-    vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()"
-    vim.cmd "au CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
+    if client.resolved_capabilities.document_highlight then
+      vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.signature_help()"
+    end
 
-    if client.resolved_capabilities.document_formatting == true then
-    vim.cmd "au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+    if client.resolved_capabilities.signature_help then
+      vim.cmd "au CursorMoved,InsertEnter <buffer> lua vim.lsp.buf.clear_references()"
+      vim.cmd "au CursorHold  <buffer> lua vim.lsp.buf.document_highlight()"
+    end
+
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd "au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
     end
 
     vim.cmd "augroup END"
@@ -107,6 +109,21 @@ return function()
   vim.fn.sign_define("LspDiagnosticsSignWarning",     {text = "", texthl = "LspDiagnosticsSignWarning"})
   vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
   vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    -- populate quickfix list with diagnostics automatically
+    function(err, method, result, client_id)
+      require('lsp_extensions.workspace.diagnostic').handler(err, method, result, client_id)
+      require('lsp_extensions.workspace.diagnostic').set_qf_list{
+        open_qflist = false,
+        client_id = client_id,
+      }
+    end, {
+      signs = {
+        severity_limit = "Warning",
+      }
+    }
+  )
 
   -- Individual servers
   lua_setup()

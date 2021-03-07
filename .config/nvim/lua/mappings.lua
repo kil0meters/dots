@@ -1,12 +1,8 @@
-local map = vim.api.nvim_set_keymap
-
 local function t(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-_G.completion_confirm = function()
-  if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info()["selected"] == -1 then
+_G.completion_confirm = function() if vim.fn.pumvisible() ~= 0 then if vim.fn.complete_info()["selected"] == -1 then
       return t'<C-n>' .. vim.fn["compe#confirm"]()
     else
       return vim.fn["compe#confirm"]()
@@ -52,68 +48,86 @@ _G.snippet_completion = function()
   end
 end
 
--- general
-map('i', 'jj', '<Esc>', {silent = true, noremap = true})
-map('n', 'Y', 'y$', {silent = true})
+local maps = {
+  n = {
+    -- folding (only works with custom mappings)
+    {'<S-F1>', '<C-i>'}, -- <C-i> is mapped to <S-F1> in alacritty
+    {'<tab>', 'za'},
+    -- general
+    {'Y', 'y$', {silent = true}},
+    -- langauge server protocol
+    {'<c-]>',      ':lua vim.lsp.buf.definition()<CR>'},
+    {'gD',         ':lua vim.lsp.buf.implementation()<CR>'},
+    {'gd',         ':lua vim.lsp.buf.definition()<CR>'},
+    {'U',          ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>'},
+    {'I',          ':lua vim.lsp.buf.hover()<CR>'},
+    {'gr',         ':lua vim.lsp.buf.rename()<CR>'},
+    {'ga',         ':lua vim.lsp.buf.code_action()<CR>'},
+    {'gs',         ':Telescope lsp_workspace_symbols<CR>'},
+    {'gS',         ':Telescope lsp_document_symbols<CR>'},
+    {'<leader>do', ':lua vim.lsp.diagnostic.set_loclist()<CR>'},
+    -- fuzzy finding
+    {'<C-p>',       '<cmd>Telescope fd theme=get_dropdown<CR>'},
+    {'<leader>ff',  '<cmd>Telescope fd theme=get_dropdown<CR>'},
+    {'<leader>ff',  '<cmd>Telescope treesitter theme=get_dropdown<CR>'},
+    {'<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>'},
+    {'<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>'},
+    {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'},
+    {'<leader>fr',  '<cmd>Telescope lsp_references theme=get_dropdown<CR>'},
+    {'<leader>fe',  '<cmd>Telescope quickfix theme=get_dropdown<CR>'},
+    {'<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>'},
+    {'<leader>fc',  '<cmd>Telescope commands theme=get_dropdown<CR>'},
+    {'<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>'},
+    {'<leader>fgl', '<cmd>Telescope git_commits theme=get_dropdown<CR>'},
+    -- window navigation
+    {'<leader>h',   '<C-w>h'},
+    {'<leader>j',   '<C-w>j'},
+    {'<leader>k',   '<C-w>k'},
+    {'<leader>l',   '<C-w>l'},
+    {'<leader>wq',  '<C-w>q'},
+    {'<leader>ws',  '<C-w>s'},
+    {'<leader>wv',  '<C-w>v'},
+    {'<leader>wtv', ':VTerm<CR>'},
+    {'<leader>wts', ':Term<CR>'},
+    -- formatting
+    {'<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
+    -- tree
+    {'<leader>L', '<cmd>Telescope file_browser theme=get_dropdown<CR>'},
+    -- undo tree
+    {'<leader>u', ':UndotreeToggle<CR>'},
+    -- git
+    {'<leader>gs', ':lua require"neogit".status.create("split")<CR>'},
+  },
+  i = {
+    -- general
+    {'jj', '<Esc>'},
+    -- completion
+    {'<Tab>',     'v:lua.tab()', {expr = true}},
+    {'<S-Tab>',   'v:lua.s_tab()', {expr = true}},
+    {'<C-Space>', 'compe#complete()', {expr = true}},
+    {'<CR>',      'v:lua.completion_confirm()', {expr = true}},
+    {'<C-j>',     'v:lua.snippet_completion()', {expr = true}},
+  },
+  v = {
+    -- indentation
+    {'<Tab>',   '>gv'},
+    {'<S-Tab>', '<gv'},
+    {'>',       '>gv'},
+    {'<',       '<gv'},
+  },
+  s = {
+    -- completion
+    {'<Tab>',     'v:lua.tab()'},
+    {'<S-Tab>',   'v:lua.s_tab()'}
+  },
+}
 
--- completion
-map('i', '<Tab>',     'v:lua.tab()',                {expr = true, noremap = true})
-map('s', '<Tab>',     'v:lua.tab()',                {expr = true, noremap = true})
-map('i', '<S-Tab>',   'v:lua.s_tab()',              {expr = true, noremap = true})
-map('s', '<S-Tab>',   'v:lua.s_tab()',              {expr = true, noremap = true})
-map('i', '<C-Space>', 'compe#complete()',           {expr = true, noremap = true})
-map('i', '<CR>',      'v:lua.completion_confirm()', {expr = true, noremap = true})
-map('i', '<C-j>',     'v:lua.snippet_completion()', {expr = true, noremap = true})
-
--- langauge server protocol
-map('n', '<c-]>',      ':lua vim.lsp.buf.definition()<CR>',                   {silent = true, noremap = true})
-map('n', 'K',          ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {silent = true, noremap = true})
-map('n', 'gD',         ':lua vim.lsp.buf.implementation()<CR>',               {silent = true, noremap = true})
-map('n', 'gd',         ':lua vim.lsp.buf.definition()<CR>',                   {silent = true, noremap = true})
-map('n', 'I',          ':lua vim.lsp.buf.hover()<CR>',                        {silent = true, noremap = true})
-map('n', 'gr',         ':Telescope lsp_references<CR>',                       {silent = true, noremap = true})
-map('n', 'ga',         ':lua vim.lsp.buf.code_action()<CR>',                  {silent = true, noremap = true})
-map('n', 'gs',         ':Telescope lsp_workspace_symbols<CR>',                {silent = true, noremap = true})
-map('n', 'gS',         ':Telescope lsp_document_symbols<CR>',                 {silent = true, noremap = true})
-map('n', 'gR',         ':lua vim.lsp.buf.rename()<CR>',                       {silent = true, noremap = true})
-map('n', '<leader>do', ':lua vim.lsp.diagnostic.set_loclist()<CR>',           {silent = true, noremap = true})
-
--- fuzzy finding
-map('n', '<C-p>',       '<cmd>Telescope fd theme=get_dropdown<CR>',          {silent = true, noremap = true})
-map('n', '<leader>ff',  '<cmd>Telescope fd theme=get_dropdown<CR>',          {silent = true, noremap = true})
-map('n', '<leader>ff',  '<cmd>Telescope treesitter theme=get_dropdown<CR>',  {silent = true, noremap = true})
-map('n', '<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>',   {silent = true, noremap = true})
-map('n', '<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>',   {silent = true, noremap = true})
-map('n', '<leader>fl',  '<cmd>Telescope live_grep<CR>',                      {silent = true, noremap = true})
-map('n', '<leader>fe',  '<cmd>Telescope quickfix theme=get_dropdown<CR>',    {silent = true, noremap = true})
-map('n', '<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>', {silent = true, noremap = true})
-map('n', '<leader>fc',  '<cmd>Telescope commands theme=get_dropdown<CR>',    {silent = true, noremap = true})
-map('n', '<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>',     {silent = true, noremap = true})
-map('n', '<leader>fgl', '<cmd>Telescope git_commits theme=get_dropdown<CR>', {silent = true, noremap = true})
-
--- window navigation
-map('n', '<leader>wh',  '<C-w>h',     {silent = true, noremap = true})
-map('n', '<leader>wj',  '<C-w>j',     {silent = true, noremap = true})
-map('n', '<leader>wk',  '<C-w>k',     {silent = true, noremap = true})
-map('n', '<leader>wl',  '<C-w>l',     {silent = true, noremap = true})
-map('n', '<leader>wq',  '<C-w>q',     {silent = true, noremap = true})
-map('n', '<leader>ws',  '<C-w>s',     {silent = true, noremap = true})
-map('n', '<leader>wv',  '<C-w>v',     {silent = true, noremap = true})
-map('n', '<leader>wtv', ':VTerm<CR>', {silent = true, noremap = true})
-map('n', '<leader>wts', ':Term<CR>',  {silent = true, noremap = true})
-
--- formatting
-map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', {silent = true, noremap = true})
-
--- tree
-map('n', '<leader>l', '<cmd>Telescope file_browser theme=get_dropdown<CR>', {silent = true})
-
--- undo tree
-map('n', '<leader>u', ':UndotreeToggle<CR>', {silent = true})
-
--- indentation
-map('v', '<Tab>', '>gv',   {silent = true, noremap = true})
-map('v', '<S-Tab>', '<gv', {silent = true, noremap = true})
-
--- git
-map('n', '<leader>gs', ':lua require"neogit".status.create("split")<CR>', {silent = true, noremap = true})
+for mode, mappings in pairs(maps) do
+  for _, mapping in ipairs(mappings) do
+    if mapping[3] == nil then
+      vim.api.nvim_set_keymap(mode, mapping[1], mapping[2], {silent = true, noremap = true})
+    else
+      vim.api.nvim_set_keymap(mode, mapping[1], mapping[2], mapping[3])
+    end
+  end
+end

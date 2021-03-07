@@ -9,7 +9,7 @@ set $right l
 
 set $term alacritty
 
-set $menu j4-dmenu-desktop --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
+set $menu j4-dmenu-desktop --no-generic --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
 # set $menu albert show
 
 ################################# STYLING ######################################
