@@ -1,4 +1,4 @@
-################################# VARIABLES ####################################
+# VARIABLES: {{{
 
 set $mod Mod4
 
@@ -12,7 +12,9 @@ set $term alacritty
 set $menu j4-dmenu-desktop --no-generic --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
 # set $menu albert show
 
-################################# STYLING ######################################
+# }}}
+
+# STYLING: {{{
 
 # BORDERS:
 default_border pixel 2
@@ -24,7 +26,9 @@ hide_edge_borders smart_no_gaps
 gaps inner 2px
 gaps outer -2px
 
-################################### COLORS ####################################
+# }}}
+
+# COLORS: {{{
 
 # GRUVBOX THEME
 set $base00 #1d2021
@@ -53,7 +57,9 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 # client.background       #FFFFFF
 
-############################### LOCK SCREEN ####################################
+# }}}
+
+# LOCK SCREEN: {{{
 
 set $lockscreen swaylock -c 000000 --text-color ffffff
 
@@ -62,7 +68,9 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep '$lockscreen'
 
-########################### STARTUP APPLICATIONS ###############################
+# }}}
+
+# STARTUP APPLICATIONS: {{{
 
 exec gammastep
 exec mako
@@ -70,7 +78,9 @@ exec mako
 # exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
 
-########################### APPLICATION SETTINGS ###############################
+# }}}
+
+# WINDOW RULES {{{
 
 for_window [app_id="albert"] {
     border none
@@ -93,7 +103,9 @@ for_window [app_id="mpv_floating"] floating enable, sticky enable
 
 for_window [app_id="alacritty"] max_render_time 1
 
-################################## OUTPUTS #####################################
+# }}}
+
+# OUTPUTS: {{{
 
 mouse_warping none
 seat * hide_cursor 8000
@@ -117,7 +129,9 @@ output DP-2 {
     adaptive_sync on
 }
 
-##################################### INPUTS ###################################
+# }}}
+
+# INPUTS: {{{
 
 input type:keyboard {
     repeat_delay 400
@@ -129,7 +143,9 @@ input type:mouse {
     pointer_accel -1
 }
 
-################################### KEY BINDINGS ###############################
+# }}}
+
+# KEY BINDINGS: {{{
 
 # GENERAL:
 bindsym $mod+Return exec $term
@@ -208,7 +224,9 @@ bindsym $mod+ctrl+shift+$right resize grow   width  40px
 # MPV:
 bindsym $mod+shift+ctrl+a exec mpv --wayland-app-id=mpv_floating "$(wl-paste)"
 
-################################ WORKSPACES ####################################
+# }}}
+
+# WORKSPACES: {{{
 
 set $workspace1  1
 set $workspace2  2
@@ -254,14 +272,14 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-################################# STATUS BAR ##################################
+# }}}
+
+# STATUS BAR: {{{
 
 exec_always pkill waybar
 exec_always killall playerctl
 exec_always waybar
 
-# bar {
-#     swaybar_command waybar
-# }
+# }}}
 
 include ~/.config/sway/conf.d/*

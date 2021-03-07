@@ -14,6 +14,12 @@ end
 return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
 
+  -- use {
+  --   'npxbr/gruvbox.nvim',
+  --   requires = {"rktjmp/lush.nvim"},
+  --   config = load_config('gruvbox')
+  -- }
+
   use {
     'gruvbox-community/gruvbox',
     config = load_config('gruvbox')
@@ -51,10 +57,7 @@ return require('packer').startup(function(use)
 
   use {
     'neovim/nvim-lspconfig',
-    requires = {
-      {'onsails/lspkind-nvim'},
-      {'ray-x/lsp_signature.nvim'}, -- for signature help while typing
-    },
+    requires = {'onsails/lspkind-nvim'},
     config = load_config('nvim-lspconfig')
   }
 
@@ -71,10 +74,16 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    event = 'VimEnter *',
+    requires = {'nvim-treesitter/nvim-treesitter-textobjects'},
     run = ':TSUpdate',
     config = load_config('nvim-treesitter')
   }
+
+  -- use {
+  --   'nvim-treesitter/playground',
+  --   event = 'VimEnter *',
+  --   requires = 'nvim-treesitter/nvim-treesitter',
+  -- }
 
   use {
     '~/Projects/neowiki',
@@ -85,14 +94,10 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'nvim-treesitter/playground',
-    event = 'VimEnter *',
-    requires = 'nvim-treesitter/nvim-treesitter',
-  }
 
   use {
     'vimwiki/vimwiki',
+    ft = {"vimwiki", "wiki"},
     requires = {'tools-life/taskwiki', opt = true},
     config = load_config('vimwiki')
   }

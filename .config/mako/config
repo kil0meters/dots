@@ -1,3 +1,5 @@
+# vim:ft=dosini
+
 output=DP-1
 font=SF Mono Nerd Font 11
 anchor=top-right

@@ -73,7 +73,7 @@ local maps = {
     {'<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>'},
     {'<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>'},
     {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'},
-    {'<leader>fr',  '<cmd>Telescope lsp_references theme=get_dropdown<CR>'},
+    {'<leader>fr',  '<cmd>lua require("km.telescope").lsp_references()<CR>'},
     {'<leader>fe',  '<cmd>Telescope quickfix theme=get_dropdown<CR>'},
     {'<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>'},
     {'<leader>fc',  '<cmd>Telescope commands theme=get_dropdown<CR>'},

@@ -3,17 +3,23 @@ return function()
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
       enable = true,
-      disable = {},
-      capturegroups = {
-        markdown = {
-          ["strong_emphasis.text"] = "GruvboxRedSign"
-        }
-      }
+      -- disable = {},
     },
     indent = {
       enable = true,
-      disable = {},
-    }
+      -- disable = {},
+    },
+    textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+        },
+      },
+    },
   }
 
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

@@ -1,4 +1,4 @@
-// vim:ft=json
+// vim:ft=jsonc
 
 {
   "layer": "top",
@@ -24,7 +24,7 @@
 
   "clock#date": {
     "interval": 10,
-    "format": "{: %b %e}", 
+    "format": "{: %b %e}",
     "tooltip-format": "{:%B %e, %Y}"
   },
 
