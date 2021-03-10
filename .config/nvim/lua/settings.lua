@@ -26,8 +26,7 @@ local options = {
     foldmethod = 'indent', -- fold based on indentation by default
     signcolumn = 'yes',    -- enable sign column all the time
     foldlevel = 99,        -- don't fold files when opened
-    -- foldmethod = 'expr',
-    -- foldexpr = 'treesitter#foldexpr()',
+    concealcursor = 'n'    -- only conceal in normal mode
   },
   global = {
     guifont = 'SFMono Nerd Font:h22',      -- font settings

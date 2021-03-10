@@ -22,11 +22,13 @@ return require('packer').startup(function(use)
 
   use {
     'gruvbox-community/gruvbox',
+    event = 'VimEnter *',
     config = load_config('gruvbox')
   }
 
   use {
     'hoob3rt/lualine.nvim',
+    after = 'gruvbox',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = load_config('lualine')
   }
@@ -38,16 +40,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'Yggdroot/indentLine',
-    requires = {
-      'lukas-reineke/indent-blankline.nvim',
-      branch = 'lua',
-    },
+    -- 'Yggdroot/indentLine',
+    'lukas-reineke/indent-blankline.nvim',
+    branch = 'lua',
     config = load_config('indentLine')
   }
 
   use {
     'hrsh7th/nvim-compe',
+    event = 'VimEnter *',
     requires = {
       {'hrsh7th/vim-vsnip'},
       {'hrsh7th/vim-vsnip-integ'}
@@ -74,16 +75,25 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    requires = {'nvim-treesitter/nvim-treesitter-textobjects'},
+    event = 'VimEnter *',
     run = ':TSUpdate',
     config = load_config('nvim-treesitter')
   }
 
-  -- use {
-  --   'nvim-treesitter/playground',
-  --   event = 'VimEnter *',
-  --   requires = 'nvim-treesitter/nvim-treesitter',
-  -- }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
+
+  use {
+    'p00f/nvim-ts-rainbow',
+    after = 'nvim-treesitter',
+  }
+
+  use {
+    'windwp/nvim-ts-autotag',
+    after = 'nvim-treesitter',
+  }
 
   use {
     '~/Projects/neowiki',
@@ -98,11 +108,11 @@ return require('packer').startup(function(use)
   use {
     'vimwiki/vimwiki',
     ft = {"vimwiki", "wiki"},
+    cmd = 'VimwikiIndex',
     requires = {'tools-life/taskwiki', opt = true},
     config = load_config('vimwiki')
   }
 
-  -- Fuzzy find
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -148,11 +158,11 @@ return require('packer').startup(function(use)
     event = 'VimEnter *',
   }
 
-  use {'sukima/xmledit', ft = 'xml'}
+  -- use {'sukima/xmledit', ft = 'xml'}
   use {'neovimhaskell/haskell-vim', ft = 'haskell'}
 
   -- use {'sheerun/vim-polyglot', event = 'VimEnter *'}
-  use 'tweekmonster/startuptime.vim'
+  -- use 'tweekmonster/startuptime.vim'
 
   use 'tmhedberg/SimpylFold'
   use 'KeitaNakamura/tex-conceal.vim'

@@ -16,15 +16,21 @@ set $menu j4-dmenu-desktop --no-generic --dmenu="bemenu -m $(swaymsg --pretty -t
 
 # STYLING: {{{
 
+set $border 2
+set $gaps 2px
+
+# WALLPAPER:
+output * bg #000000 solid_color
+
 # BORDERS:
-default_border pixel 2
-titlebar_border_thickness 2
+default_border pixel $border
+titlebar_border_thickness $border
 default_floating_border normal
 hide_edge_borders smart_no_gaps
 
 # GAPS:
-gaps inner 2px
-gaps outer -2px
+gaps inner $gaps
+gaps outer -$gaps
 
 # }}}
 
@@ -110,7 +116,7 @@ for_window [app_id="alacritty"] max_render_time 1
 mouse_warping none
 seat * hide_cursor 8000
 
-output * bg #1d2021 solid_color
+# output * bg #1d2021 solid_color
 output DP-1 {
     resolution 1920x1080@144Hz
     scale 1

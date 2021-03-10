@@ -1,13 +1,21 @@
 return function()
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    highlight = {
-      enable = true,
-      -- disable = {},
-    },
     indent = {
       enable = true,
-      -- disable = {},
+      disable = {'html', 'python'}
+    },
+    highlight = { enable = true },
+    rainbow = { enable = true },
+    autotag = { enable = true },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        node_incremental = "+",
+        node_decremental = "-",
+        -- init_selection = "gnn",
+        -- scope_incremental = "grc",
+      },
     },
     textobjects = {
       select = {

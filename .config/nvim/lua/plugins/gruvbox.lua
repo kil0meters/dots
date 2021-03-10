@@ -19,6 +19,14 @@ return function()
   hi! link DiffChange GruvboxAquaSign
   hi! link DiffDelete GruvboxRedSign
 
+  hi! link rainbowcol1 GruvboxOrange
+  hi! link rainbowcol2 GruvboxAqua
+  hi! link rainbowcol3 GruvboxRed
+  hi! link rainbowcol4 GruvboxBlue
+  hi! link rainbowcol5 GruvboxYellow
+  hi! link rainbowcol6 GruvboxPurple
+  hi! link rainbowcol7 GruvboxFg1
+
   hi! link NeowikiH1 GruvboxOrangeBold
   hi! link NeowikiH2 GruvboxAquaBold
   hi! link NeowikiH3 GruvboxRedBold

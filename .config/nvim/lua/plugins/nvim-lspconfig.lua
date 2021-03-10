@@ -3,17 +3,17 @@ return function()
   local default_on_attach = function(client)
     vim.cmd "augroup lsp_commands"
     vim.cmd "au!"
-    if client.resolved_capabilities.document_highlight then
-      vim.cmd "au CursorHoldI <buffer> lua vim.lsp.buf.signature_help()"
+    if client.resolved_capabilities.signature_help then
+      vim.cmd "au CursorHoldI <buffer> silent lua vim.lsp.buf.signature_help()"
     end
 
-    if client.resolved_capabilities.signature_help then
-      vim.cmd "au CursorMoved,InsertEnter <buffer> lua vim.lsp.buf.clear_references()"
-      vim.cmd "au CursorHold  <buffer> lua vim.lsp.buf.document_highlight()"
+    if client.resolved_capabilities.document_highlight then
+      vim.cmd "au CursorMoved,InsertEnter <buffer> silent lua vim.lsp.buf.clear_references()"
+      vim.cmd "au CursorMoved <buffer> silent lua vim.lsp.buf.document_highlight()"
     end
 
     if client.resolved_capabilities.document_formatting then
-      vim.cmd "au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+      vim.cmd "au BufWritePre <buffer> silent lua vim.lsp.buf.formatting_sync()"
     end
 
     vim.cmd "augroup END"
