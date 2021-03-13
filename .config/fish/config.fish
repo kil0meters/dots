@@ -19,10 +19,11 @@ end
 # function fish_prompt; printf "[$hostname] "; fish_prompt_original; end
 # end
 
-set HOME /home/kilometers
-set TERM xterm-256color
-set EDITOR nvim
-set BAT_THEME gruvbox
+set -x HOME /home/kilometers
+set -x TERM xterm-256color
+set -x EDITOR nvim
+set -x BAT_THEME gruvbox
+set -x MANPAGER 'nvim +Man!'
 
 alias vim nvim
 alias tb toolbox

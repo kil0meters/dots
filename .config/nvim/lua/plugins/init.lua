@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    -- 'Yggdroot/indentLine',
+    -- '~/Projects/indent-blankline.nvim',
     'lukas-reineke/indent-blankline.nvim',
     branch = 'lua',
     config = load_config('indentLine')
@@ -86,6 +86,11 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+  }
+
+  use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
   }
@@ -107,11 +112,12 @@ return require('packer').startup(function(use)
 
   use {
     'vimwiki/vimwiki',
-    ft = {"vimwiki", "wiki"},
-    cmd = 'VimwikiIndex',
-    requires = {'tools-life/taskwiki', opt = true},
+    -- ft = {"vimwiki", "wiki"},
+    -- cmd = 'VimwikiIndex',
+    requires = {'tools-life/taskwiki'},
     config = load_config('vimwiki')
   }
+
 
   use {
     'nvim-telescope/telescope.nvim',
