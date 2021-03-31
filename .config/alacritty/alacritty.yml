@@ -2,8 +2,8 @@ window:
   # decorations: none
   padding:
     x: 0
-    y: 3
-  # dynamic_padding: false
+    y: 8
+  # dynamic_padding: true
 
 font:
   normal:
@@ -18,13 +18,13 @@ font:
   bold_italic:
     family: SF Mono Nerd Font
     style: Bold Italic
-  size: 10.0
+  size: 11.0
   offset:
     x: 0
-    y: 0
+    y: 4
   glyph_offset:
     x: 0
-    y: 0
+    y: 2
 
 mouse_bindings:
   - { mouse: 4, mods: Control, action: IncreaseFontSize }
@@ -32,33 +32,65 @@ mouse_bindings:
 key_bindings:
   - { key: I, mods: Control, chars: "\x1b[11;2~" }
 
+# GRUVBOX: {{{
+# colors:
+#   primary:
+#     # hard contrast:    background = '#1d2021'
+#     # regular contrast: background = '#282828'
+#     # soft contrast:    background = '#32302f'
+#     background: '#1d2021'
+#     foreground: '#ebdbb2'
+#   normal:
+#     black:   '#282828'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#a89984'
+#   bright:
+#     black:   '#928374'
+#     red:     '#fb4934'
+#     green:   '#b8bb26'
+#     yellow:  '#fabd2f'
+#     blue:    '#83a598'
+#     magenta: '#d3869b'
+#     cyan:    '#8ec07c'
+#     white:   '#ebdbb2'
+#   search:
+#     # searchbar color is used for title background
+#     bar:
+#       background: '#1d2021'
+#       foreground: '#ebdbb2'
+# }}}
+
+# CODE DARK: {{{
 colors:
   primary:
-    # hard contrast:    background = '#1d2021'
-    # regular contrast: background = '#282828'
-    # soft contrast:    background = '#32302f'
-    background: '#1d2021'
-    foreground: '#ebdbb2'
+    background: '#1e1e1e'
+    foreground: '#d4d4d4'
   normal:
     black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    red:     '#F44747'
+    green:   '#6A9955'
+    yellow:  '#DCDCAA'
+    blue:    '#569CD6'
+    magenta: '#646695'
+    cyan:    '#4EC9B0'
+    white:   '#EFEFEF'
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '#000000'
+    red:     '#D16969'
+    green:   '#B5CEA8'
+    yellow:  '#D7BA7D'
+    blue:    '#9CDCFE'
+    magenta: '#796393'
+    cyan:    '#6be0c9'
+    white:   '#FFFFFF'
   search:
     # searchbar color is used for title background
     bar:
-      background: '#1d2021'
-      foreground: '#ebdbb2'
+      background: '#1e1e1e'
+      foreground: '#d4d4d4'
+# }}}

@@ -7,6 +7,7 @@ local maps = {
     {'<tab>', 'za'},
     -- general
     {'Y', 'y$', {silent = true}},
+    {'<leader><leader>', ':noh<cr>'},
     -- langauge server protocol
     {'<c-]>',      ':lua vim.lsp.buf.definition()<CR>'},
     {'gD',         ':lua vim.lsp.buf.implementation()<CR>'},
@@ -32,10 +33,6 @@ local maps = {
     {'<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>'},
     {'<leader>fgl', '<cmd>Telescope git_commits theme=get_dropdown<CR>'},
     -- window navigation
-    {'<leader>h',   '<C-w>h'},
-    {'<leader>j',   '<C-w>j'},
-    {'<leader>k',   '<C-w>k'},
-    {'<leader>l',   '<C-w>l'},
     {'<leader>wq',  '<C-w>q'},
     {'<leader>ws',  '<C-w>s'},
     {'<leader>wv',  '<C-w>v'},
@@ -44,7 +41,7 @@ local maps = {
     -- formatting
     {'<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
     -- tree
-    {'<leader>L', '<cmd>Telescope file_browser theme=get_dropdown<CR>'},
+    {'<leader>l', ':Lex<CR>'},
     -- undo tree
     {'<leader>u', ':UndotreeToggle<CR>'},
     -- git
@@ -53,6 +50,8 @@ local maps = {
   i = {
     -- general
     {'jj', '<Esc>'},
+    {';;', '<Esc>A;'},
+    {',,', '<Esc>A,'},
     -- completion
     {'<Tab>',     'v:lua.tab()',                {expr = true}},
     {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}},

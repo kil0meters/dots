@@ -15,20 +15,27 @@ return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
 
   -- use {
-  --   'npxbr/gruvbox.nvim',
-  --   requires = {"rktjmp/lush.nvim"},
+  --   'gruvbox-community/gruvbox',
+  --   event = 'VimEnter *',
   --   config = load_config('gruvbox')
   -- }
 
+  -- use {
+  --   'nanotech/jellybeans.vim',
+  --   config = function()
+  --     vim.cmd "colorscheme jellybeans"
+  --   end
+  -- }
+
   use {
-    'gruvbox-community/gruvbox',
-    event = 'VimEnter *',
-    config = load_config('gruvbox')
+    -- 'tomasiser/vim-code-dark',
+    '~/Projects/vim-code-dark',
+    config = load_config('codedark')
   }
 
   use {
     'hoob3rt/lualine.nvim',
-    after = 'gruvbox',
+    -- after = 'gruvbox',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = load_config('lualine')
   }
@@ -95,10 +102,10 @@ return require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
-  use {
-    'windwp/nvim-ts-autotag',
-    after = 'nvim-treesitter',
-  }
+  -- use {
+  --   'windwp/nvim-ts-autotag',
+  --   after = 'nvim-treesitter',
+  -- }
 
   use {
     '~/Projects/neowiki',
@@ -138,9 +145,7 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
-    config = function()
-      require('gitsigns').setup{}
-    end
+    config = load_config('gitsigns')
   }
 
   use {
@@ -170,9 +175,9 @@ return require('packer').startup(function(use)
   -- use {'sheerun/vim-polyglot', event = 'VimEnter *'}
   -- use 'tweekmonster/startuptime.vim'
 
+  use 'zsugabubus/crazy8.nvim'
   use 'tmhedberg/SimpylFold'
   use 'KeitaNakamura/tex-conceal.vim'
-  use 'matze/vim-tex-fold'
   use 'mbbill/undotree'
   use 'tjdevries/lsp_extensions.nvim'
   use 'tpope/vim-surround'

@@ -26,7 +26,9 @@ local options = {
     foldmethod = 'indent', -- fold based on indentation by default
     signcolumn = 'yes',    -- enable sign column all the time
     foldlevel = 99,        -- don't fold files when opened
-    concealcursor = 'n'    -- only conceal in normal mode
+    concealcursor = 'n',   -- only conceal in normal mode
+    -- colorcolumn = '9999',
+    cursorline = true,
   },
   global = {
     guifont = 'SFMono Nerd Font:h22',      -- font settings
@@ -38,21 +40,24 @@ local options = {
     smarttab = true,                       -- backspace deletes 'shiftwidth' spaces
     ignorecase = true,                     -- ignore capitalization while searching
     smartcase = true,                      -- override 'ignorecase' if there is a capital letter
-    hlsearch = false,                      -- don't highlight previous search terms
+    -- hlsearch = false,                      -- don't highlight previous search terms
     scrolloff = 20,                        -- screen lines to keep above and below cursor
     splitbelow = true,                     -- split below
-    updatetime = 600,                     -- how long CursorHold takes
+    updatetime = 600,                      -- how long CursorHold takes
     completeopt = 'menu,menuone,noselect', -- completion options
     shortmess = 'filnxtToOFc',             -- ui setting
     swapfile = false,                      -- disable swap files
     backup = false,                        --
     hidden = true,
+    jumpoptions = "stack",
     fillchars = 'fold: ,vert:│,eob: ,msgsep:‾',
     showmode = false,
     autowrite = true,         -- autosave
     autowriteall = true,      -- autosave
   }
 }
+
+-- cmd
 
 for mode, sets in pairs(options) do
   for option, value in pairs(sets) do

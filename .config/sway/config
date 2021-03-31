@@ -26,7 +26,8 @@ output * bg #000000 solid_color
 default_border pixel $border
 titlebar_border_thickness $border
 default_floating_border normal
-hide_edge_borders smart_no_gaps
+hide_edge_borders none
+smart_borders no_gaps
 
 # GAPS:
 gaps inner $gaps
@@ -37,31 +38,37 @@ gaps outer -$gaps
 # COLORS: {{{
 
 # GRUVBOX THEME
-set $base00 #1d2021
-set $base01 #3c3836
-set $base02 #504945
-set $base03 #665c54
-set $base04 #bdae93
-set $base05 #d5c4a1
-set $base06 #ebdbb2
-set $base07 #fbf1c7
-set $base08 #fb4934
-set $base09 #fe8019
-set $base0A #fabd2f
-set $base0B #b8bb26
-set $base0C #8ec07c
-set $base0D #83a598
-set $base0E #d3869b
-set $base0F #d65d0e
+# set $base00 #1d2021
+# set $base01 #3c3836
+# set $base02 #504945
+# set $base03 #665c54
+# set $base04 #bdae93
+# set $base05 #d5c4a1
+# set $base06 #ebdbb2
+# set $base07 #fbf1c7
+# set $base08 #fb4934
+# set $base09 #fe8019
+# set $base0A #fabd2f
+# set $base0B #b8bb26
+# set $base0C #8ec07c
+# set $base0D #83a598
+# set $base0E #d3869b
+# set $base0F #d65d0e
 
-# BASE 16
-client.focused          $base0D $base0D $base00 $base0D $base0D
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
-# client.background       #FFFFFF
+# CODEDARK THEME
+set $background #1e1e1e
+set $inactive #3D3D40
+set $foregrounds #d4d4d4
+set $urgent #F44747
+set $focused #569CD6
+set $focused_indicator #9CDCFE
+
+# CLASS                 BORDER      BACKGROUND  TEXT         INDICATOR          CHILD BORDER
+client.focused          $focused    $focused    $background  $focused_indicator $focused
+client.unfocused        $inactive   $background $foregrounds $inactive          $inactive
+client.focused_inactive $inactive   $inactive   $foregrounds $inactive          $inactive
+client.urgent           $urgent     $urgent     $background  $urgent            $urgent
+client.placeholder      $background $background $foregrounds $background        $background
 
 # }}}
 
@@ -157,7 +164,7 @@ input type:mouse {
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term --class "alacritty_floating"
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec $menu
+bindsym $mod+space exec $menu
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 floating_modifier $mod normal
@@ -187,8 +194,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 bindsym $mod+f fullscreen
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+y floating toggle
+bindsym $mod+y focus mode_toggle
 bindsym $mod+a focus parent
 
 # SCREENSHOTS:
@@ -205,7 +212,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # LOCK SCREEN:
-bindsym $mod+Shift+y exec $lockscreen
+# bindsym $mod+Shift+y exec $lockscreen
 
 # SOUND:
 bindsym $mod+u exec amixer -D pulse set Master 1+ toggle
@@ -267,16 +274,38 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $mod+exclam move container to workspace $workspace1
+bindsym $mod+at move container to workspace $workspace2
+bindsym $mod+numbersign move container to workspace $workspace3
+bindsym $mod+dollar move container to workspace $workspace4
+bindsym $mod+percent move container to workspace $workspace5
+bindsym $mod+asciicircum move container to workspace $workspace6
+bindsym $mod+ampersand move container to workspace $workspace7
+bindsym $mod+asterisk move container to workspace $workspace8
+bindsym $mod+parenleft move container to workspace $workspace9
+bindsym $mod+parenright move container to workspace $workspace10
+
+# bindsym $mod+1 workspace $workspace1
+# bindsym $mod+2 workspace $workspace2
+# bindsym $mod+3 workspace $workspace3
+# bindsym $mod+4 workspace $workspace4
+# bindsym $mod+5 workspace $workspace5
+# bindsym $mod+6 workspace $workspace6
+# bindsym $mod+7 workspace $workspace7
+# bindsym $mod+8 workspace $workspace8
+# bindsym $mod+9 workspace $workspace9
+# bindsym $mod+0 workspace $workspace10
+
+# bindsym $mod+Shift+1 move container to workspace $workspace1
+# bindsym $mod+Shift+2 move container to workspace $workspace2
+# bindsym $mod+Shift+3 move container to workspace $workspace3
+# bindsym $mod+Shift+4 move container to workspace $workspace4
+# bindsym $mod+Shift+5 move container to workspace $workspace5
+# bindsym $mod+Shift+6 move container to workspace $workspace6
+# bindsym $mod+Shift+7 move container to workspace $workspace7
+# bindsym $mod+Shift+8 move container to workspace $workspace8
+# bindsym $mod+Shift+9 move container to workspace $workspace9
+# bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # }}}
 

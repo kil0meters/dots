@@ -37,6 +37,5 @@ return function()
   hi! link NeowikiTodo Todo
   hi! link NeowikiDone GruvboxAqua
   hi! link NeowikiTodoProgress GruvboxGray
-
   ]]
 end

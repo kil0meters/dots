@@ -7,7 +7,7 @@ return function()
     },
     highlight = { enable = true },
     rainbow = { enable = true },
-    autotag = { enable = true },
+    -- autotag = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
