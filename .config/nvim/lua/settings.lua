@@ -49,7 +49,6 @@ local options = {
     swapfile = false,                      -- disable swap files
     backup = false,                        --
     hidden = true,
-    jumpoptions = "stack",
     fillchars = 'fold: ,vert:│,eob: ,msgsep:‾',
     showmode = false,
     autowrite = true,         -- autosave

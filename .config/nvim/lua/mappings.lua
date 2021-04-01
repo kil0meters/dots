@@ -32,12 +32,9 @@ local maps = {
     {'<leader>fc',  '<cmd>Telescope commands theme=get_dropdown<CR>'},
     {'<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>'},
     {'<leader>fgl', '<cmd>Telescope git_commits theme=get_dropdown<CR>'},
-    -- window navigation
-    {'<leader>wq',  '<C-w>q'},
-    {'<leader>ws',  '<C-w>s'},
-    {'<leader>wv',  '<C-w>v'},
-    {'<leader>wtv', ':VTerm<CR>'},
-    {'<leader>wts', ':Term<CR>'},
+    -- terminal splits
+    {'<C-w>tv', ':vsplit term://fish<CR>i'},
+    {'<C-w>ts', ':split term://fish<CR>i'},
     -- formatting
     {'<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
     -- tree
@@ -46,6 +43,9 @@ local maps = {
     {'<leader>u', ':UndotreeToggle<CR>'},
     -- git
     {'<leader>gs', ':lua require"neogit".status.create("split")<CR>'},
+    -- move
+    {'<C-j>', ':m+<CR>=='},
+    {'<C-k>', ':m-2<CR>=='},
   },
   i = {
     -- general
@@ -65,12 +65,18 @@ local maps = {
     {'<S-Tab>', '<gv'},
     {'>',       '>gv'},
     {'<',       '<gv'},
+    -- move
+    {'<C-j>', ":'<,'>m'>+<CR>gv=gv=="},
+    {'<C-k>', ":'<,'>m-2<CR>gv=gv=="},
   },
   s = {
     -- completion
     {'<Tab>',     'v:lua.tab()',   {expr = true}},
-    {'<S-Tab>',   'v:lua.s_tab()', {expr = true}}
+    {'<S-Tab>',   'v:lua.s_tab()', {expr = true}},
   },
+  t = {
+    {'<C-J>', '<C-\\><C-n>'},
+  }
 }
 
 for mode, mappings in pairs(maps) do

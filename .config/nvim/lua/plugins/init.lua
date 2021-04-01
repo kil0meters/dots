@@ -137,10 +137,10 @@ return require('packer').startup(function(use)
     config = load_config('telescope')
   }
 
-  use {
-    'matze/vim-move',
-    config = load_config('vim-move')
-  }
+  -- use {
+  --   'matze/vim-move',
+  --   config = load_config('vim-move')
+  -- }
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -159,12 +159,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end,
-    config = load_config('firenvim')
-  }
-
-  use {
     'TimUntersberger/neogit',
     event = 'VimEnter *',
   }
@@ -172,14 +166,11 @@ return require('packer').startup(function(use)
   -- use {'sukima/xmledit', ft = 'xml'}
   use {'neovimhaskell/haskell-vim', ft = 'haskell'}
 
-  -- use {'sheerun/vim-polyglot', event = 'VimEnter *'}
   -- use 'tweekmonster/startuptime.vim'
-
   use 'zsugabubus/crazy8.nvim'
   use 'tmhedberg/SimpylFold'
   use 'KeitaNakamura/tex-conceal.vim'
   use 'mbbill/undotree'
   use 'tjdevries/lsp_extensions.nvim'
   use 'tpope/vim-surround'
-  use 'vimlab/split-term.vim'
 end)
