@@ -6,7 +6,9 @@ return function()
     'NeogitStatus',
     'help',
     'man',
-    'tex'
+    'tex',
+    'packer',
+    'tsplayground'
   }
   -- vim.g.indentLine_char = '▏' -- '│'
   -- vim.g.indentLine_char = '▏' -- '│'

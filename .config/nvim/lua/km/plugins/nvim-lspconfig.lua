@@ -1,9 +1,7 @@
 return function()
   local lsp = require 'lspconfig'
   local default_on_attach = function(client)
-    vim.cmd "augroup lsp_commands"
-    vim.cmd "au!"
-    if client.resolved_capabilities.signature_help then
+    vim.cmd "augroup lsp_commands" vim.cmd "au!" if client.resolved_capabilities.signature_help then
       vim.cmd "au CursorHoldI <buffer> silent lua vim.lsp.buf.signature_help()"
     end
 
@@ -37,7 +35,6 @@ return function()
     local sumneko_root_path = '/home/kilometers/Projects/lua-language-server'
     local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
-
     lsp.sumneko_lua.setup {
       cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
       on_attach = default_on_attach,
@@ -66,8 +63,40 @@ return function()
     }
   end
 
-  local tex_setup = function()
-    lsp.texlab.setup {
+  -- CONFIG
+
+  require 'lspkind'.init()
+
+  vim.fn.sign_define("LspDiagnosticsSignError",       {text = "", texthl = "LspDiagnosticsSignError"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning",     {text = "", texthl = "LspDiagnosticsSignWarning"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
+  vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    -- populate quickfix list with diagnostics automatically
+    function(err, method, result, client_id)
+      require('lsp_extensions.workspace.diagnostic').handler(err, method, result, client_id)
+      require('lsp_extensions.workspace.diagnostic').set_qf_list{
+        open_qflist = false,
+        client_id = client_id,
+      }
+    end, {
+      signs = {
+        severity_limit = "Warning",
+      }
+    }
+  )
+
+  -- Individual servers
+  lua_setup()
+
+  local servers = {
+    'clangd',
+    'cssls',
+    'gopls',
+    'hls',
+    'tsserver',
+    texlab = {
       on_attach=default_on_attach,
       capabilities=default_capabilities,
       settings = {
@@ -98,39 +127,18 @@ return function()
           }
         }
       }
-    }
-  end
-
-  -- CONFIG
-
-  require 'lspkind'.init()
-
-  vim.fn.sign_define("LspDiagnosticsSignError",       {text = "", texthl = "LspDiagnosticsSignError"})
-  vim.fn.sign_define("LspDiagnosticsSignWarning",     {text = "", texthl = "LspDiagnosticsSignWarning"})
-  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
-  vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
-
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    -- populate quickfix list with diagnostics automatically
-    function(err, method, result, client_id)
-      require('lsp_extensions.workspace.diagnostic').handler(err, method, result, client_id)
-      require('lsp_extensions.workspace.diagnostic').set_qf_list{
-        open_qflist = false,
-        client_id = client_id,
-      }
-    end, {
-      signs = {
-        severity_limit = "Warning",
-      }
-    }
-  )
-
-  -- Individual servers
-  lua_setup()
-  tex_setup()
-
-  local servers = {'html', 'cssls', 'yamlls', 'jsonls', 'rust_analyzer', 'clangd', 'pyright', 'gopls', 'hls' }
-  for _, server in ipairs(servers) do
-    lsp[server].setup { on_attach=default_on_attach, capabilities=default_capabilities }
+    },
+    'html',
+    'jsonls',
+    'pyright',
+    'rust_analyzer',
+    'yamlls',
+  }
+  for key, value in pairs(servers) do
+    if type(key) == "number" then
+      lsp[value].setup { on_attach=default_on_attach, capabilities=default_capabilities }
+    else
+      lsp[key].setup(value)
+    end
   end
 end

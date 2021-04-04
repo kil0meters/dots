@@ -1,3 +1,3 @@
-require 'settings'
-require 'mappings'
-require 'plugins'
+require('km.settings')
+require('km.mappings')
+require('km.plugins')

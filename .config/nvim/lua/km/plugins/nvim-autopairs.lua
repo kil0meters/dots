@@ -11,7 +11,7 @@ return function()
     },
     disable_filetype = { "TelescopePrompt" },
     html_break_line_filetype = {
-      'html' , 'vue' , 'typescriptreact' , 'svelte' , 'javascriptreact'
+      'html', 'vue', 'typescriptreact', 'svelte', 'javascriptreact'
     },
 
     -- ignore alphanumeric, operators, quote, curly brace, and square bracket
