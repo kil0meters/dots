@@ -36,6 +36,13 @@ nmap {'ga',         ':lua vim.lsp.buf.code_action()<CR>'}
 nmap {'gs',         ':Telescope lsp_workspace_symbols<CR>'}
 nmap {'gS',         ':Telescope lsp_document_symbols<CR>'}
 nmap {'<leader>do', ':lua vim.lsp.diagnostic.set_loclist()<CR>'}
+-- quickfix lists
+nmap {'<leader>;', ':ToggleQuickfixList<CR>'}
+nmap {"<leader>'", ':ToggleLocationList<CR>'}
+nmap {'<C-j>', ':cn<CR>'}
+nmap {'<C-k>', ':cp<CR>'}
+nmap {'<leader>j', ':lne<CR>'}
+nmap {'<leader>k', ':lp<CR>'}
 -- fuzzy finding
 nmap {'<C-p>',       '<cmd>Telescope fd theme=get_dropdown<CR>'}
 nmap {'<leader>ff',  '<cmd>Telescope fd theme=get_dropdown<CR>'}
@@ -46,7 +53,7 @@ nmap {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'}
 nmap {'<leader>fr',  '<cmd>lua require("km.telescope").lsp_references()<CR>'}
 nmap {'<leader>fp',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Projects", directory = "~/Projects/"}))<CR>'}
 nmap {'<leader>fc',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Configs", directory = "~/.config/"}))<CR>'}
-nmap {'<leader>fe',  '<cmd>Telescope quickfix theme=get_dropdown<CR>'}
+nmap {'<leader>fe',  '<cmd>Telescope lsp_workspace_diagnostics theme=get_dropdown<CR>'}
 nmap {'<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>'}
 nmap {'<leader>fC',  '<cmd>Telescope commands theme=get_dropdown<CR>'}
 nmap {'<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>'}
@@ -68,8 +75,10 @@ nmap {'<leader>u', ':UndotreeToggle<CR>'}
  -- git
 nmap {'<leader>gs', ':lua require"neogit".status.create("split")<CR>'}
  -- move
-nmap {'<C-j>', ':m+<CR>=='}
-nmap {'<C-k>', ':m-2<CR>=='}
+-- nmap {'<C-j>', ':m+<CR>=='}
+-- nmap {'<C-k>', ':m-2<CR>=='}
+-- vmap {'<C-j>', ":'<,'>m'>+<CR>gv=gv=="}
+-- vmap {'<C-k>', ":'<,'>m-2<CR>gv=gv=="}
 -- general
 imap {'jj', '<Esc>'}
 imap {';;', '<Esc>A;'}
@@ -83,13 +92,3 @@ imap {'<C-Space>', 'compe#complete()',           {expr = true}}
 imap {'<CR>',      'v:lua.completion_confirm()', {expr = true}}
 imap {'<C-e>',     'compe#close("<C-e>")',       {expr = true}}
 imap {'<C-j>',     'v:lua.snippet_completion()', {expr = true}}
--- indentation
-vmap {'<Tab>',   '>gv'}
-vmap {'<S-Tab>', '<gv'}
-vmap {'>',       '>gv'}
-vmap {'<',       '<gv'}
--- move
-vmap {'<C-j>', ":'<,'>m'>+<CR>gv=gv=="}
-vmap {'<C-k>', ":'<,'>m-2<CR>gv=gv=="}
-
-tmap {'<C-J>', '<C-\\><C-n>'}

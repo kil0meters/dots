@@ -72,21 +72,6 @@ return function()
   vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
   vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    -- populate quickfix list with diagnostics automatically
-    function(err, method, result, client_id)
-      require('lsp_extensions.workspace.diagnostic').handler(err, method, result, client_id)
-      require('lsp_extensions.workspace.diagnostic').set_qf_list{
-        open_qflist = false,
-        client_id = client_id,
-      }
-    end, {
-      signs = {
-        severity_limit = "Warning",
-      }
-    }
-  )
-
   -- Individual servers
   lua_setup()
 
