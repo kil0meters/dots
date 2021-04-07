@@ -10,17 +10,17 @@ _G.completion_confirm = function() if vim.fn.pumvisible() ~= 0 then if vim.fn.co
       return vim.fn["compe#confirm"]()
     end
   else
-    return require'nvim-autopairs'.check_break_line_char()
+    return t'<CR>'
   end
 end
 
 _G.tab = function()
   if vim.fn.pumvisible() ~= 0 then
     return t"<C-n>"
-  elseif vim.fn['vsnip#jumpable'](1) ~= 0 then
+  elseif vim.fn['vsnip#available'](1) ~= 0 then
     -- For whatever reason the nvim api doesn't escape <Plug>
     -- vim.cmd [[ call feedkeys("\<Plug>(vsnip-jump-next)") ]]
-    return t"<Plug>(vsnip-jump-next)"
+    return t"<Plug>(vsnip-expand-or-jump)"
   else
     return t"<Tab>"
   end

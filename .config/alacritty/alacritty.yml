@@ -8,7 +8,7 @@ window:
 font:
   normal:
     family: SF Mono Nerd Font
-    style: Medium
+    style: Regular
   bold:
     family: SF Mono Nerd Font
     style: Bold

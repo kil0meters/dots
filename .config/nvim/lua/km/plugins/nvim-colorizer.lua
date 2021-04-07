@@ -1,6 +1,9 @@
 return function()
   require 'colorizer'.setup(
-    { '*' },
+    {
+      '*',
+      '!packer',
+    },
     {
       RGB      = true, -- #RGB hex codes
       RRGGBB   = true, -- #RRGGBB hex codes

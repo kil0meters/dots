@@ -1,5 +1,13 @@
+fun! StripTrailingWhitespace()
+  " Don't strip on these filetypes
+  if &ft =~ 'markdown\|vimwiki'
+    return
+  endif
+  %s/\s\+$//e
+endfun
+
 " Clear trailing spaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * call StripTrailingWhitespace()
 
 " Disable line numbers in terminals
 autocmd TermOpen * setlocal nonumber norelativenumber

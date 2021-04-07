@@ -13,6 +13,8 @@ end
 
 return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
+
+  -- A simple helper function to automatically load the config for a plugin
   local use_config = function(tbl)
     local lst = vim.split(tbl[1], '/', true)
     tbl.config = require('km.plugins.' .. vim.split(lst[#lst], '.', true)[1])
@@ -35,14 +37,17 @@ return require('packer').startup(function(use)
   use_config {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   use_config {'norcalli/nvim-colorizer.lua'}
   use_config {'kosayoda/nvim-lightbulb'}
-  use_config {'windwp/nvim-autopairs'}
+  -- use_config {'windwp/nvim-autopairs'}
+  use {'jiangmiao/auto-pairs'}
   use_config {'b3nj5m1n/kommentary'}
 
   use {'zsugabubus/crazy8.nvim'}
-  use {'TimUntersberger/neogit'}
+  -- use {'TimUntersberger/neogit'} -- butter than fugitive, but not really finished yet
+  use {'tpope/vim-fugitive'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'mbbill/undotree'}
   use {'tpope/vim-surround'}
+  use {'junegunn/vim-easy-align'}
 
   use_config {'hrsh7th/nvim-compe'}
   use {'hrsh7th/vim-vsnip'}

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64
 export MOZ_ENABLE_WAYLAND=1
 export _JAVA_AWT_WM_NONPARENTING=1
 export CLUTTER_BACKEND=wayland
