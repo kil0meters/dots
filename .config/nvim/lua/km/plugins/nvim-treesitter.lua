@@ -5,8 +5,16 @@ return function()
       enable = true,
       disable = {'html', 'python'}
     },
-    highlight = { enable = true },
-    rainbow = { enable = true },
+    highlight = {
+      enable = true,
+      -- this decreases performanced but allows spell checking to work properly
+      -- for now
+      additional_vim_regex_highlighting = true,
+    },
+    rainbow = {
+      enable = true,
+      -- extended_mode = true,
+    },
     autotag = { enable = true },
     incremental_selection = {
       enable = true,

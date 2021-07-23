@@ -15,8 +15,6 @@ local function smap(mapping) map('s', mapping) end
 local function tmap(mapping) map('t', mapping) end
 
 -- general
-nmap {'d', '"_d'}
-nmap {'c', '"_c'}
 nmap {'Y', 'y$', {silent = true}}
 nmap {'Q', '<nop>', {silent = true}} -- ex mode seems useless and annoying
 nmap {'<leader><leader>', ':noh<cr>'}
@@ -35,6 +33,7 @@ nmap {'gd',    ':lua vim.lsp.buf.definition()<CR>'}
 nmap {'U',     ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>'}
 nmap {'I',     ':lua vim.lsp.buf.hover()<CR>'}
 nmap {'gr',    ':lua vim.lsp.buf.rename()<CR>'}
+nmap {'gR',    '<cmd>lua require("km.telescope").lsp_references()<CR>'}
 nmap {'ga',    ':lua vim.lsp.buf.code_action()<CR>'}
 nmap {'gs',    ':Telescope lsp_document_symbols theme=get_dropdown<CR>'}
 nmap {'gS',    ':Telescope lsp_workspace_symbols theme=get_dropdown<CR>'}
@@ -46,13 +45,15 @@ nmap {'<C-k>', ':cp<CR>'}
 nmap {'<leader>j', ':lne<CR>'}
 nmap {'<leader>k', ':lp<CR>'}
 -- fuzzy finding
-nmap {'<C-p>',       '<cmd>Telescope fd theme=get_dropdown<CR>'}
-nmap {'<leader>ff',  '<cmd>Telescope fd theme=get_dropdown<CR>'}
+nmap {'<C-p>',       '<cmd>lua require("km.telescope").project_files()<CR>'}
+nmap {'<leader>ff',  '<cmd>lua require("km.telescope").project_files()<CR>'}
 nmap {'<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>'}
 nmap {'<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>'}
 nmap {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'}
 nmap {'<leader>fr',  '<cmd>lua require("km.telescope").lsp_references()<CR>'}
 nmap {'<leader>fp',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Projects", directory = "~/Projects/"}))<CR>'}
+nmap {'<leader>fp',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Projects", directory = "~/Projects/"}))<CR>'}
+nmap {'<leader>fP',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "", directory = "~/Papers/"}))<CR>'}
 nmap {'<leader>fc',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Configs", directory = "~/.config/"}))<CR>'}
 nmap {'<leader>fe',  '<cmd>Telescope lsp_workspace_diagnostics theme=get_dropdown<CR>'}
 nmap {'<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>'}
@@ -65,8 +66,8 @@ nmap {'<M-j>', '<C-w>-'}
 nmap {'<M-k>', '<C-w>+'}
 nmap {'<M-l>', '<C-w>>'}
 -- terminal splits
-nmap {'<C-w>tv', ':vsplit term://fish<CR>i'}
-nmap {'<C-w>ts', ':split term://fish<CR>i'}
+nmap {'<C-w>tv', ':vsplit +term<CR>i'}
+nmap {'<C-w>ts', ':split +term<CR>i'}
 -- formatting
 nmap {'<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
 -- tree
@@ -74,7 +75,9 @@ nmap {'<leader>l', ':Lex<CR>'}
 -- undo tree
 nmap {'<leader>u', ':UndotreeToggle<CR>'}
 -- git
-nmap {'<leader>gs', ':Gstatus<CR>'}
+nmap {'<leader>gs', '<cmd>Neogit kind=split<CR>'}
+-- etc telescope
+nmap {'<leader>pp',  '<cmd>lua require("km.telescope").password_store(require("telescope.themes").get_dropdown{})<CR>'}
 -- move
 -- nmap {'<C-j>', ':m+<CR>=='}
 -- nmap {'<C-k>', ':m-2<CR>=='}
@@ -96,7 +99,7 @@ imap {'<C-j>',     'v:lua.snippet_completion()', {expr = true}}
 -- termnal
 tmap {'<esc><esc>', '<C-\\><C-N>'}
 -- easy align
-vim.cmd [[
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-]]
+-- vim.cmd [[
+-- xmap ga <Plug>(EasyAlign)
+-- nmap ga <Plug>(EasyAlign)
+-- ]]

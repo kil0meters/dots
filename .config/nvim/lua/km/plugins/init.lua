@@ -7,10 +7,6 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-local load_config = function(pkg_name)
-  return require('km.plugins.' .. pkg_name)
-end
-
 return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
 
@@ -27,13 +23,17 @@ return require('packer').startup(function(use)
   use_config {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use {'nvim-treesitter/playground'}
-  use {'p00f/nvim-ts-rainbow'}
+  -- use_config {'lewis6991/spellsitter.nvim'}
+  -- use {'p00f/nvim-ts-rainbow'}
+  use {'~/Projects/nvim-ts-rainbow'}
   use {'windwp/nvim-ts-autotag'}
   use {'neovimhaskell/haskell-vim', ft = 'haskell'}
 
-  use_config {'vimwiki/vimwiki', requires = {'tools-life/taskwiki'}}
+  use_config {'vimwiki/vimwiki'}
+  use {'tools-life/taskwiki'}
+
   use_config {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
-  use_config {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+  use_config {'lukas-reineke/indent-blankline.nvim'}
   use_config {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   use_config {'norcalli/nvim-colorizer.lua'}
   use_config {'kosayoda/nvim-lightbulb'}
@@ -41,8 +41,8 @@ return require('packer').startup(function(use)
   use {'jiangmiao/auto-pairs'}
   use_config {'b3nj5m1n/kommentary'}
 
-  use {'zsugabubus/crazy8.nvim'}
-  -- use {'TimUntersberger/neogit'} -- butter than fugitive, but not really finished yet
+  -- use {'zsugabubus/crazy8.nvim'}
+  use {'TimUntersberger/neogit'} -- butter than fugitive, but not really finished yet
   use {'tpope/vim-fugitive'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'mbbill/undotree'}
@@ -58,7 +58,6 @@ return require('packer').startup(function(use)
 
   use_config {
     'nvim-telescope/telescope.nvim',
-    branch = 'use_plenary_async',
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},

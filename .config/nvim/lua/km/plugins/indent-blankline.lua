@@ -4,11 +4,14 @@ return function()
     'pandoc',
     'vimwiki',
     'NeogitStatus',
-    'help',
-    'man',
-    'tex',
     'packer',
+    'tex',
     'tsplayground'
+  }
+  vim.g.indent_blankline_buftype_exclude = {
+    'terminal',
+    'nofile',
+    'help'
   }
   -- vim.g.indentLine_char = '▏' -- '│'
   -- vim.g.indentLine_char = '▏' -- '│'

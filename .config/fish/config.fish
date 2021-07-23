@@ -61,7 +61,7 @@ set -a PATH ./node_modules/.bin
 
 set -a NODE_PATH /home/kilometers/.local/lib/node_modules
 
-fish_vi_key_bindings
+# fish_vi_key_bindings
 
 function fish_mode_prompt --description 'Displays the current mode'
     # Do nothing if not in vi mode
@@ -69,19 +69,19 @@ function fish_mode_prompt --description 'Displays the current mode'
         switch $fish_bind_mode
             case default
                 set_color --bold red
-                echo " N"
+                printf " N "
             case insert
                 set_color --bold green
-                echo " I"
+                printf " I "
             case replace-one
                 set_color --bold green
-                echo " R"
+                printf " R "
             case visual
                 set_color --bold brmagenta
-                echo " V"
+                printf " V "
         end
         set_color normal
-        printf " "
+        printf ""
     end
 end
 

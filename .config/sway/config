@@ -7,10 +7,9 @@ set $down  j
 set $up    k
 set $right l
 
-set $term gnome-terminal
+set $term footclient
 
 set $menu j4-dmenu-desktop --no-generic --dmenu="bemenu -m $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}' | cut -d '-' -f 2) -p run -l 10 -i -n --fb=#3c3836 --ff=#dbdbb2 --nb=#3c3836 --nf=#dbdbb2 --hb=#83a598 --hf=#1d2021 --tb=#83a598 --tf=#1d2021"
-# set $menu albert show
 
 # }}}
 
@@ -87,10 +86,14 @@ exec swayidle -w \
 
 exec gammastep
 exec mako
+# exec ibus-daemon --xim --daemonize -r
 # exec albert
 # exec ~/.config/sway/transparent_non_focused.py
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --background-color=#ff32302f --border-color=#ffebdbb2 --bar-color=#ffdbdbb2
 exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec /usr/libexec/xdg-desktop-portal-gtk
+exec foot --server
+# exec bash -c "while :; do /usr/libexec/gnome-terminal-server; done"
 
 # }}}
 
@@ -125,7 +128,7 @@ mouse_warping none
 seat * hide_cursor 8000
 
 # output * bg #1d2021 solid_color
-output DP-1 {
+output 'Acer Technologies Acer XFA240 0x000072F9' {
     resolution 1920x1080@144Hz
     scale 1
     position 0,76
@@ -135,7 +138,7 @@ output DP-1 {
     adaptive_sync off
 }
 
-output DP-2 {
+output 'Goldstar Company Ltd LG HDR 4K 0x00008BD6' {
     resolution 3840x2160@60Hz
     scale 1.75
     position 1920,0
@@ -241,28 +244,16 @@ bindsym $mod+shift+ctrl+a exec mpv --wayland-app-id=mpv_floating "$(wl-paste)"
 # }}}
 
 # WORKSPACES: {{{
-
-set $workspace1  1
-set $workspace2  2
-set $workspace3  3
-set $workspace4  4
-set $workspace5  5
-set $workspace6  6
-set $workspace7  7
-set $workspace8  8
-set $workspace9  9
-set $workspace10 10
-
-workspace number 1 output DP-1
-workspace number 3 output DP-1
-workspace number 5 output DP-1
-workspace number 7 output DP-1
-workspace number 9 output DP-1
-workspace number 2 output DP-2
-workspace number 4 output DP-2
-workspace number 6 output DP-2
-workspace number 8 output DP-2
-workspace number 10 output DP-2
+workspace 1 output DP-1
+workspace 3 output DP-1
+workspace 5 output DP-1
+workspace 7 output DP-1
+workspace 9 output DP-1
+workspace 2 output DP-2
+workspace 4 output DP-2
+workspace 6 output DP-2
+workspace 8 output DP-2
+workspace 10 output DP-2
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
