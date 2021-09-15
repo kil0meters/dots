@@ -63,25 +63,24 @@ return function()
     }
   end
 
-  -- CONFIG
+  local texlab_setup = function()
+    local forward_search
 
-  require 'lspkind'.init()
+    if vim.fn.has("mac") == 1 then
+      forward_search = {
+        executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+        args = {"%l", "%p", "%f"},
+        onSave = true,
+      };
+    elseif vim.fn.has("unix") == 1 then
+      forward_search = {
+        executable = "okular",
+        args = {"--unique", "%p#src:%l%f"},
+        onSave = true,
+      };
+    end
 
-  vim.fn.sign_define("LspDiagnosticsSignError",       {text = "", texthl = "LspDiagnosticsSignError"})
-  vim.fn.sign_define("LspDiagnosticsSignWarning",     {text = "", texthl = "LspDiagnosticsSignWarning"})
-  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
-  vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
-
-  -- Individual servers
-  lua_setup()
-
-  local servers = {
-    'clangd',
-    'cssls',
-    'gopls',
-    'hls',
-    'tsserver',
-    texlab = {
+    lsp.texlab.setup{
       on_attach=default_on_attach,
       capabilities=default_capabilities,
       settings = {
@@ -112,7 +111,28 @@ return function()
           -- },
         }
       }
-    },
+    }
+  end
+
+  -- CONFIG
+
+  require 'lspkind'.init()
+
+  vim.fn.sign_define("LspDiagnosticsSignError",       {text = "", texthl = "LspDiagnosticsSignError"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning",     {text = "", texthl = "LspDiagnosticsSignWarning"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "LspDiagnosticsSignInformation"})
+  vim.fn.sign_define("LspDiagnosticsSignHint",        {text = "", texthl = "LspDiagnosticsSignHint"})
+
+  -- Individual servers
+  lua_setup()
+  texlab_setup()
+
+  local servers = {
+    'clangd',
+    'cssls',
+    'gopls',
+    'hls',
+    'tsserver',
     'html',
     'jsonls',
     'pyright',
