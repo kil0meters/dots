@@ -85,31 +85,31 @@ return function()
       on_attach=default_on_attach,
       capabilities=default_capabilities,
       settings = {
-        bibtex = {
-          formatting = {
-            lineLength = 80,
-          }
-        },
-        latex = {
+        texlab = {
+          auxDirectory = "build",
           build = {
-            executable = "latexmk",
+            executable = "tectonic",
             args = {
-              "-pdf",
-              "-interaction=nonstopmode",
-              "-pvc",
-              "%f"
+              "--outdir=build",
+              "--synctex",
+              "--print",
+              "--keep-logs",
+              "--keep-intermediates",
+              "%f",
             },
-            outputDirectory = "build",
+            forwardSearchAfter = true,
             onSave = true,
           },
           forwardSearch = {
-            executable = "zathura",
-            args = {"--synctex-forward", "%l:1:%f", "%p"},
+            executable = "okular",
+            args = {"--unique", "%p#src:%l%f"},
             onSave = true,
           },
-          lint = {
-            onChange = true
-          }
+          -- forwardSearch = {
+          --   executable = "zathura",
+          --   args = {"--synctex-forward", "%l:1:%f", "%p"},
+          --   onSave = true,
+          -- },
         }
       }
     },

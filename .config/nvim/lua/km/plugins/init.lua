@@ -49,6 +49,8 @@ return require('packer').startup(function(use)
   use {'tpope/vim-surround'}
   use {'junegunn/vim-easy-align'}
 
+  use {'tpope/vim-sleuth'}
+
   use_config {'hrsh7th/nvim-compe'}
   use {'hrsh7th/vim-vsnip'}
 
@@ -65,12 +67,12 @@ return require('packer').startup(function(use)
     },
   }
 
-  use {
-    '~/Projects/neowiki',
-    event = 'VimEnter *',
-    requires = 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require'neowiki'.setup{}
-    end
-  }
+  -- use {
+  --   '~/Projects/neowiki',
+  --   event = 'VimEnter *',
+  --   requires = 'nvim-treesitter/nvim-treesitter',
+  --   config = function()
+  --     require'neowiki'.setup{}
+  --   end
+  -- }
 end)

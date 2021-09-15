@@ -15,6 +15,16 @@ local function smap(mapping) map('s', mapping) end
 local function tmap(mapping) map('t', mapping) end
 
 -- general
+-- nmap {'j', 'h'}
+-- nmap {'k', 'j'}
+-- nmap {'l', 'k'}
+-- nmap {';', 'l'}
+
+-- vmap {'j', 'h'}
+-- vmap {'k', 'j'}
+-- vmap {'l', 'k'}
+-- vmap {';', 'l'}
+
 nmap {'Y', 'y$', {silent = true}}
 nmap {'Q', '<nop>', {silent = true}} -- ex mode seems useless and annoying
 nmap {'<leader><leader>', ':noh<cr>'}
@@ -33,8 +43,8 @@ nmap {'gd',    ':lua vim.lsp.buf.definition()<CR>'}
 nmap {'U',     ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>'}
 nmap {'I',     ':lua vim.lsp.buf.hover()<CR>'}
 nmap {'gr',    ':lua vim.lsp.buf.rename()<CR>'}
-nmap {'gR',    '<cmd>lua require("km.telescope").lsp_references()<CR>'}
-nmap {'ga',    ':lua vim.lsp.buf.code_action()<CR>'}
+nmap {'gR',    ':Telescope lsp_references theme=get_cursor<CR>'}
+nmap {'ga',    ':Telescope lsp_code_actions theme=get_cursor<CR>'}
 nmap {'gs',    ':Telescope lsp_document_symbols theme=get_dropdown<CR>'}
 nmap {'gS',    ':Telescope lsp_workspace_symbols theme=get_dropdown<CR>'}
 -- quickfix lists
@@ -50,8 +60,6 @@ nmap {'<leader>ff',  '<cmd>lua require("km.telescope").project_files()<CR>'}
 nmap {'<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>'}
 nmap {'<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>'}
 nmap {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'}
-nmap {'<leader>fr',  '<cmd>lua require("km.telescope").lsp_references()<CR>'}
-nmap {'<leader>fp',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Projects", directory = "~/Projects/"}))<CR>'}
 nmap {'<leader>fp',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Projects", directory = "~/Projects/"}))<CR>'}
 nmap {'<leader>fP',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "", directory = "~/Papers/"}))<CR>'}
 nmap {'<leader>fc',  '<cmd>lua require("km.telescope").directory(require("telescope.themes").get_dropdown({prompt_title = "Configs", directory = "~/.config/"}))<CR>'}

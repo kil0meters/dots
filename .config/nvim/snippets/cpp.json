@@ -1,0 +1,40 @@
+{
+  "Main Template": {
+    "prefix": "main",
+    "body": [
+      "#include <iostream>",
+      "",
+      "using namespace std;",
+      "",
+      "int main() {",
+      "  $1",
+      "",
+      "  return 0;",
+      "}"
+    ],
+    "description": "Main Template"
+  },
+  "Header guard": {
+    "prefix": "guard",
+    "body": [
+      "#ifndef ${VIM:toupper(expand('%:r'))}_H",
+      "#define ${VIM:toupper(expand('%:r'))}_H",
+      "\n$0\n",
+      "#endif // ${VIM:toupper(expand('%:r'))}_H"
+    ],
+    "description": "A header guard"
+  },
+  "class": {
+    "prefix": ["class", "cls"],
+    "body": [
+      "class $1",
+      "{",
+      "private:",
+      "public:",
+      "  $1($2);",
+      "  ~$1();",
+      "};"
+    ],
+    "description": "A C++ class definition"
+  }
+}
