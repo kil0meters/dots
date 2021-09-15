@@ -36,12 +36,11 @@ return require('packer').startup(function(use)
   use_config {'lukas-reineke/indent-blankline.nvim'}
   use_config {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   use_config {'norcalli/nvim-colorizer.lua'}
-  use_config {'kosayoda/nvim-lightbulb'}
   -- use_config {'windwp/nvim-autopairs'}
   use {'jiangmiao/auto-pairs'}
   use_config {'b3nj5m1n/kommentary'}
 
-  -- use {'zsugabubus/crazy8.nvim'}
+  use {'zsugabubus/crazy8.nvim'}
   use {'TimUntersberger/neogit'} -- butter than fugitive, but not really finished yet
   use {'tpope/vim-fugitive'}
   use {'kyazdani42/nvim-web-devicons'}
@@ -51,9 +50,18 @@ return require('packer').startup(function(use)
 
   use {'tpope/vim-sleuth'}
 
-  use_config {'hrsh7th/nvim-compe'}
-  use {'hrsh7th/vim-vsnip'}
+  use_config {'L3MON4D3/LuaSnip'}
+  use_config {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-path'},
+      {'Saecki/crates.nvim'}
+    }
+  }
 
+  use_config {'kosayoda/nvim-lightbulb'}
   use_config {'neovim/nvim-lspconfig'}
   use {'onsails/lspkind-nvim'}
   use {'nvim-lua/lsp_extensions.nvim'}

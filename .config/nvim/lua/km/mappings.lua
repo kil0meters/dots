@@ -95,15 +95,15 @@ nmap {'<leader>pp',  '<cmd>lua require("km.telescope").password_store(require("t
 imap {'jj', '<Esc>'}
 imap {';;', '<Esc>A;'}
 imap {',,', '<Esc>A,'}
--- completion
-imap {'<Tab>',     'v:lua.tab()',                {expr = true}}
-smap {'<Tab>',     'v:lua.tab()',                {expr = true}}
-imap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
-smap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
-imap {'<C-Space>', 'compe#complete()',           {expr = true}}
-imap {'<CR>',      'v:lua.completion_confirm()', {expr = true}}
-imap {'<C-e>',     'compe#close("<C-e>")',       {expr = true}}
-imap {'<C-j>',     'v:lua.snippet_completion()', {expr = true}}
+-- completionf
+-- imap {'<Tab>',     'v:lua.tab()',                {expr = true}}
+-- smap {'<Tab>',     'v:lua.tab()',                {expr = true}}
+-- imap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
+-- smap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
+-- imap {'<C-Space>', 'compe#complete()',           {expr = true}}
+-- imap {'<CR>',      'v:lua.completion_confirm()', {expr = true}}
+-- imap {'<C-e>',     'compe#close("<C-e>")',       {expr = true}}
+-- imap {'<C-j>',     'v:lua.snippet_completion()', {expr = true}}
 -- termnal
 tmap {'<esc><esc>', '<C-\\><C-N>'}
 -- easy align

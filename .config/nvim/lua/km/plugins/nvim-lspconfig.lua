@@ -17,7 +17,7 @@ return function()
     vim.cmd "augroup END"
   end
   local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-  default_capabilities.textDocument.completion.completionItem.snippetSupport = true
+  default_capabilities = require('cmp_nvim_lsp').update_capabilities(default_capabilities)
 
   local lua_setup = function()
     local system_name
@@ -99,16 +99,7 @@ return function()
             forwardSearchAfter = true,
             onSave = true,
           },
-          forwardSearch = {
-            executable = "okular",
-            args = {"--unique", "%p#src:%l%f"},
-            onSave = true,
-          },
-          -- forwardSearch = {
-          --   executable = "zathura",
-          --   args = {"--synctex-forward", "%l:1:%f", "%p"},
-          --   onSave = true,
-          -- },
+          forwardSearch = forward_search,
         }
       }
     }

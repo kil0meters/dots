@@ -45,8 +45,8 @@
     "prefix": "b",
     "body": [
       "\\begin{$1}",
-      "  $2",
-      "\\end{$1}$0"
+      "  $0",
+      "\\end{$1}"
     ],
     "description": "A begin block"
   },
