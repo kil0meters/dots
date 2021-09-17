@@ -32,6 +32,8 @@ return require('packer').startup(function(use)
   use_config {'vimwiki/vimwiki'}
   use {'tools-life/taskwiki'}
 
+  use {'Pocco81/TrueZen.nvim'}
+
   use_config {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
   use_config {'lukas-reineke/indent-blankline.nvim'}
   use_config {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -41,12 +43,12 @@ return require('packer').startup(function(use)
   use_config {'b3nj5m1n/kommentary'}
 
   use {'zsugabubus/crazy8.nvim'}
-  use {'TimUntersberger/neogit'} -- butter than fugitive, but not really finished yet
-  use {'tpope/vim-fugitive'}
+  use {'TimUntersberger/neogit'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'mbbill/undotree'}
   use {'tpope/vim-surround'}
   use {'junegunn/vim-easy-align'}
+  use {'kyazdani42/nvim-tree.lua'}
 
   use {'tpope/vim-sleuth'}
 
@@ -62,8 +64,8 @@ return require('packer').startup(function(use)
   }
 
   use_config {'kosayoda/nvim-lightbulb'}
+  use_config {'onsails/lspkind-nvim'}
   use_config {'neovim/nvim-lspconfig'}
-  use {'onsails/lspkind-nvim'}
   use {'nvim-lua/lsp_extensions.nvim'}
 
   use_config {

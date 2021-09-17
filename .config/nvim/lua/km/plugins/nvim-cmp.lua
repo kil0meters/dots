@@ -13,6 +13,7 @@ return function()
 
   local cmp = require('cmp')
   local luasnip = require('luasnip')
+  local lspkind = require('lspkind')
 
   cmp.setup {
     snippet = {
@@ -20,14 +21,32 @@ return function()
         luasnip.lsp_expand(args.body)
       end
     },
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
+    },
+    formatting = {
+      format = function(_, vim_item)
+        vim_item.kind = lspkind.presets.default[vim_item.kind]
+
+        if string.len(vim_item.abbr) >= 30 then
+          vim_item.abbr = string.sub(vim_item.abbr, 1, 27) .. '...'
+        end
+
+        return vim_item
+      end
+    },
+    experimental = {
+      ghost_text = true,
+    },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
         if vim.fn.pumvisible() == 1 then
-          feedkey("<C-n>", "n")
+          cmp.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
-        -- elseif has_words_before() then
-        --   cmp.complete()
         else
           fallback()
         end
@@ -35,7 +54,10 @@ return function()
 
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if vim.fn.pumvisible() == 1 then
-          feedkey("<C-p>", "n")
+          cmp.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else

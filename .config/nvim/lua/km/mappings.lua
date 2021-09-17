@@ -1,5 +1,3 @@
-require('km.completion')
-
 local function map(mode, mapping)
   if mapping[3] == nil then
     vim.api.nvim_set_keymap(mode, mapping[1], mapping[2], {silent = true, noremap = true})
@@ -79,7 +77,7 @@ nmap {'<C-w>ts', ':split +term<CR>i'}
 -- formatting
 nmap {'<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
 -- tree
-nmap {'<leader>l', ':Lex<CR>'}
+nmap {'<leader>l', ':NvimTreeToggle<CR>'}
 -- undo tree
 nmap {'<leader>u', ':UndotreeToggle<CR>'}
 -- git
@@ -95,15 +93,6 @@ nmap {'<leader>pp',  '<cmd>lua require("km.telescope").password_store(require("t
 imap {'jj', '<Esc>'}
 imap {';;', '<Esc>A;'}
 imap {',,', '<Esc>A,'}
--- completionf
--- imap {'<Tab>',     'v:lua.tab()',                {expr = true}}
--- smap {'<Tab>',     'v:lua.tab()',                {expr = true}}
--- imap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
--- smap {'<S-Tab>',   'v:lua.s_tab()',              {expr = true}}
--- imap {'<C-Space>', 'compe#complete()',           {expr = true}}
--- imap {'<CR>',      'v:lua.completion_confirm()', {expr = true}}
--- imap {'<C-e>',     'compe#close("<C-e>")',       {expr = true}}
--- imap {'<C-j>',     'v:lua.snippet_completion()', {expr = true}}
 -- termnal
 tmap {'<esc><esc>', '<C-\\><C-N>'}
 -- easy align
