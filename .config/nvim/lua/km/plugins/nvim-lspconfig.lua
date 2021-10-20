@@ -71,13 +71,18 @@ return function()
         executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
         args = {"%l", "%p", "%f"},
         onSave = true,
-      };
+      }
     elseif vim.fn.has("unix") == 1 then
+      -- forward_search = {
+      --   executable = "okular",
+      --   args = {"--unique", "%p#src:%l%f"},
+      --   onSave = true,
+      -- }
       forward_search = {
-        executable = "okular",
-        args = {"--unique", "%p#src:%l%f"},
+        executable = "zathura",
+        args = {"--synctex-forward", "%l:1:%f", "%p"},
         onSave = true,
-      };
+      }
     end
 
     lsp.texlab.setup{

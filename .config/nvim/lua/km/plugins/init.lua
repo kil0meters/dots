@@ -17,7 +17,9 @@ return require('packer').startup(function(use)
     use(tbl)
   end
 
-  use_config {'~/Projects/vim-code-dark'}
+  use {'~/Projects/vim-code-dark'}
+  use_config {'gruvbox-community/gruvbox'}
+
   use_config {'hoob3rt/lualine.nvim'}
 
   use_config {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -25,7 +27,7 @@ return require('packer').startup(function(use)
   use {'nvim-treesitter/playground'}
   -- use_config {'lewis6991/spellsitter.nvim'}
   -- use {'p00f/nvim-ts-rainbow'}
-  use {'~/Projects/nvim-ts-rainbow'}
+  -- use {'~/Projects/nvim-ts-rainbow'}
   use {'windwp/nvim-ts-autotag'}
   use {'neovimhaskell/haskell-vim', ft = 'haskell'}
 
@@ -34,13 +36,14 @@ return require('packer').startup(function(use)
 
   use {'Pocco81/TrueZen.nvim'}
 
-  use_config {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+  -- use_config {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
   use_config {'lukas-reineke/indent-blankline.nvim'}
   use_config {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   use_config {'norcalli/nvim-colorizer.lua'}
   -- use_config {'windwp/nvim-autopairs'}
   use {'jiangmiao/auto-pairs'}
   use_config {'b3nj5m1n/kommentary'}
+  use {'tikhomirov/vim-glsl'}
 
   use {'zsugabubus/crazy8.nvim'}
   use {'TimUntersberger/neogit'}
@@ -49,7 +52,6 @@ return require('packer').startup(function(use)
   use {'tpope/vim-surround'}
   use {'junegunn/vim-easy-align'}
   use {'kyazdani42/nvim-tree.lua'}
-
   use {'tpope/vim-sleuth'}
 
   use_config {'L3MON4D3/LuaSnip'}

@@ -36,7 +36,7 @@ return function()
       end
     },
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
     },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)

@@ -53,8 +53,8 @@ nmap {'<C-k>', ':cp<CR>'}
 nmap {'<leader>j', ':lne<CR>'}
 nmap {'<leader>k', ':lp<CR>'}
 -- fuzzy finding
-nmap {'<C-p>',       '<cmd>lua require("km.telescope").project_files()<CR>'}
-nmap {'<leader>ff',  '<cmd>lua require("km.telescope").project_files()<CR>'}
+nmap {'<C-p>',       '<cmd>Telescope find_files theme=get_dropdown<CR>'}
+nmap {'<leader>ff',  '<cmd>Telescope find_files theme=get_dropdown<CR>'}
 nmap {'<leader>fh',  '<cmd>Telescope help_tags theme=get_dropdown<CR>'}
 nmap {'<leader>fm',  '<cmd>Telescope man_pages theme=get_dropdown<CR>'}
 nmap {'<leader>fl',  '<cmd>Telescope live_grep theme=get_dropdown<CR>'}
@@ -65,6 +65,7 @@ nmap {'<leader>fe',  '<cmd>Telescope lsp_workspace_diagnostics theme=get_dropdow
 nmap {'<leader>fL',  '<cmd>Telescope grep_string theme=get_dropdown<CR>'}
 nmap {'<leader>fC',  '<cmd>Telescope commands theme=get_dropdown<CR>'}
 nmap {'<leader>fb',  '<cmd>Telescope buffers theme=get_dropdown<CR>'}
+nmap {'<leader>fgl', '<cmd>Telescope git_files theme=get_dropdown<CR>'}
 nmap {'<leader>fgl', '<cmd>Telescope git_commits theme=get_dropdown<CR>'}
 -- window resizing
 nmap {'<M-h>', '<C-w><'}

@@ -19,8 +19,7 @@ return function()
       lualine_z = {}
     },
     options = {
-      -- theme = 'gruvbox',
-      theme = 'codedark',
+      theme = vim.g.colors_name,
       section_separators = '',
       component_separators = ''
     }
